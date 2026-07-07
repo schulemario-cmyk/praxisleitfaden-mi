@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+
+<html lang="de">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>Praxisleitfaden Medien und Informatik fachübergreifend</title>
+<style>
+
+    :root{
+      --bg:#f4f5f6;
+      --paper:#ffffff;
+      --ink:#191d21;
+      --muted:#69727d;
+      --line:#d8dde3;
+      --line-strong:#c7ced7;
+      --accent:#008aa6;
+      --accent-dark:#005f73;
+      --accent2:#8dc63f;
+      --yellow:#f6c342;
+      --orange:#f28c28;
+      --red:#df3f3f;
+      --magenta:#c02a78;
+      --purple:#5d4aa6;
+      --blue:#2d7cc1;
+      --soft:#eaf7fb;
+      --soft2:#edf8e6;
+      --warn:#fff7e5;
+      --shadow:0 10px 28px rgba(25,29,33,.08);
+      --radius:2px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:var(--bg);
+      color:var(--ink);
+      font:16px/1.5 Arial,Helvetica,sans-serif;
+      letter-spacing:.01em;
+    }
+    .ksab-topline{
+      display:flex;
+      justify-content:flex-end;
+      gap:22px;
+      align-items:center;
+      padding:10px 38px;
+      background:#fff;
+      border-bottom:1px solid var(--line);
+      font-size:13px;
+      color:var(--muted);
+    }
+    .ksab-topline span{white-space:nowrap}
+    header{
+      position:relative;
+      overflow:hidden;
+      background:#fff;
+      color:var(--ink);
+      padding:30px 38px 34px;
+      border-bottom:6px solid var(--accent);
+    }
+    header:before{
+      content:"";
+      position:absolute;
+      right:30px;
+      top:18px;
+      width:260px;
+      height:150px;
+      opacity:.95;
+      background:
+        radial-gradient(circle at 20px 82px,var(--red) 0 26px,transparent 27px),
+        radial-gradient(circle at 76px 55px,var(--orange) 0 32px,transparent 33px),
+        radial-gradient(circle at 128px 82px,var(--yellow) 0 24px,transparent 25px),
+        radial-gradient(circle at 176px 45px,var(--accent2) 0 31px,transparent 32px),
+        radial-gradient(circle at 218px 92px,var(--blue) 0 28px,transparent 29px),
+        radial-gradient(circle at 92px 112px,var(--magenta) 0 27px,transparent 28px),
+        radial-gradient(circle at 160px 122px,var(--purple) 0 19px,transparent 20px);
+      pointer-events:none;
+    }
+    header:after{
+      content:"";
+      position:absolute;
+      left:0;
+      right:0;
+      bottom:0;
+      height:6px;
+      background:linear-gradient(90deg,var(--red) 0 14%,var(--orange) 14% 28%,var(--yellow) 28% 42%,var(--accent2) 42% 58%,var(--accent) 58% 74%,var(--blue) 74% 88%,var(--purple) 88% 100%);
+    }
+    .brandline{position:relative;z-index:1;max-width:980px}
+    .brand-kicker{
+      margin:0 0 8px;
+      font-size:14px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.12em;
+      color:var(--accent-dark);
+    }
+    header h1{
+      margin:0 0 10px;
+      font-size:40px;
+      line-height:1.08;
+      font-weight:800;
+      color:#101418;
+      max-width:860px;
+    }
+    header p{margin:0;max-width:820px;color:#3d4650;font-size:17px}
+    main{
+      max-width:1680px;
+      margin:0 auto;
+      padding:26px 28px;
+      display:grid;
+      grid-template-columns:310px minmax(0,1fr);
+      gap:22px;
+      align-items:start;
+    }
+    nav.toc{
+      grid-column:1;
+      grid-row:1 / span 20;
+      position:sticky;
+      top:18px;
+      max-height:calc(100vh - 36px);
+      overflow-y:auto;
+      overflow-x:hidden;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-top:5px solid var(--accent);
+      border-radius:var(--radius);
+      padding:14px;
+      margin:0;
+      box-shadow:var(--shadow);
+    }
+    nav.toc .toc-title{
+      font-weight:800;
+      color:#101418;
+      margin:0 0 10px;
+      padding-bottom:8px;
+      border-bottom:1px solid var(--line);
+      font-size:15px;
+    }
+    nav.toc a{
+      display:block;
+      margin:2px 0;
+      padding:7px 8px;
+      border-left:4px solid transparent;
+      color:#1c2a36;
+      font-weight:700;
+      text-decoration:none;
+      font-size:13px;
+      line-height:1.25;
+    }
+    nav.toc a:hover{background:var(--soft);border-left-color:var(--accent);text-decoration:none}
+    section{
+      grid-column:2;
+      background:var(--paper);
+      border:1px solid var(--line);
+      border-radius:var(--radius);
+      padding:28px;
+      margin:0 0 22px;
+      box-shadow:0 3px 14px rgba(25,29,33,.045);
+    }
+    section[id]{scroll-margin-top:18px}
+    h2{
+      font-size:26px;
+      line-height:1.2;
+      margin:0 0 16px;
+      color:#101418;
+      padding-bottom:10px;
+      border-bottom:3px solid var(--accent);
+      width:fit-content;
+      max-width:100%;
+    }
+    h3{font-size:19px;margin:24px 0 10px;color:#101418}
+    h4{margin:18px 0 7px;font-size:16px;color:#101418}
+    p{margin:8px 0}
+    .note{
+      background:var(--soft);
+      border:1px solid #c6e8f1;
+      border-left:8px solid var(--accent);
+      padding:13px 15px;
+      border-radius:var(--radius);
+      margin:14px 0;
+      color:#172033;
+    }
+    .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px}
+    .card{
+      border:1px solid var(--line);
+      border-top:5px solid var(--accent2);
+      border-radius:var(--radius);
+      padding:16px;
+      background:#fff;
+    }
+    .card h3{margin-top:0;color:#111827}
+    .tag{
+      display:inline-block;
+      border:1px solid #cbd4de;
+      border-radius:999px;
+      padding:3px 9px;
+      margin:2px;
+      font-size:12px;
+      font-weight:700;
+      background:#fff;
+      color:#35414d;
+    }
+    .tag.mi{background:var(--soft2);border-color:#cde8b5;color:#315f16}
+    .tag.year{background:#f1f3f5;color:#35414d}
+    table{border-collapse:collapse;width:100%;margin:14px 0 4px;font-size:14px;vertical-align:top;background:#fff}
+    th,td{border:1px solid var(--line);padding:10px 11px;vertical-align:top;text-align:left}
+    th{background:#eef2f5;color:#101418;font-weight:800}
+    tr:nth-child(even) td{background:#fafbfc}
+    tbody tr:hover td{background:#f2fafc}
+    a{color:#006f88;text-decoration:none;font-weight:700}
+    a:hover{text-decoration:underline}
+    .small{font-size:13px;color:var(--muted)}
+    .filters{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 18px}
+    .filters input,.filters select{border:1px solid var(--line-strong);border-radius:var(--radius);padding:9px 10px;background:#fff;font:inherit;min-width:210px}
+    .subject-filter-panel{border:2px solid #dbeafe;background:#f8fafc}
+    .subject-filter-panel h2{margin-bottom:8px}
+    .subject-filter-panel .filter-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:14px}
+    .subject-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:8px;margin-top:12px}
+    .subject-choice{display:flex;gap:8px;align-items:center;border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:9px 10px;cursor:pointer;font-weight:700;color:#243042}
+    .subject-choice:hover{background:var(--soft)}
+    .subject-choice input{accent-color:var(--accent)}
+    .btn{border:1px solid var(--line-strong);border-radius:var(--radius);padding:9px 12px;background:#fff;color:#111827;font:inherit;font-weight:800;cursor:pointer}
+    .btn:hover{background:#eef2f5}
+    .result-count{font-size:14px;color:var(--muted);font-weight:700}
+    .hidden-by-filter{display:none!important}
+
+    .revealed-by-link{outline:3px solid var(--accent);outline-offset:3px}
+
+    .example{
+      border:1px solid var(--line);
+      border-top:5px solid var(--blue);
+      border-radius:var(--radius);
+      padding:16px;
+      margin:14px 0;
+      background:#fff;
+      box-shadow:0 2px 10px rgba(25,29,33,.04);
+    }
+    .example h3{display:flex;justify-content:space-between;gap:12px;align-items:flex-start;margin:0 0 10px;color:#101418}
+    .example .meta{font-size:13px;color:var(--muted);font-weight:600}
+
+    .cat{display:inline-block;border-radius:999px;padding:3px 9px;margin:2px 6px 2px 0;font-size:12px;font-weight:800;border:1px solid transparent}
+    .cat-planung{background:#e1f3f8;color:#005f73;border-color:#8bd2e1}
+    .cat-material{background:#fff2cf;color:#7a4a00;border-color:#f6c342}
+    .cat-projekt{background:#f8e4ef;color:#8a1450;border-color:#eb9ac4}
+    .category-line{margin:4px 0 8px}
+    .legend{display:flex;flex-wrap:wrap;gap:8px;margin:6px 0 16px}
+    .steps{margin:8px 0 0 0;padding-left:20px}
+    .steps li{margin:3px 0}
+    details{border:1px solid var(--line);border-radius:var(--radius);padding:11px 13px;margin:8px 0;background:#fcfcfd}
+    summary{font-weight:800;cursor:pointer;color:#101418}
+    .sourcebox{background:#fbfcfd;border:1px solid var(--line);border-left:5px solid var(--accent2);border-radius:var(--radius);padding:13px 15px;margin-top:14px}
+    .print-note{display:none}
+    .sidebar-block{border-top:1px solid var(--line);margin-top:11px;padding-top:11px}
+    .sidebar-block h2{font-size:13px;margin:0 0 6px;color:#101418;border:0;padding:0;width:auto}
+    nav.toc .small{font-size:11px;line-height:1.25;margin:4px 0 6px}
+    nav.toc .subject-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px;margin-top:6px}
+    nav.toc .subject-choice{font-size:11.5px;padding:5px 6px;border-radius:var(--radius);gap:5px;font-weight:700;min-width:0;line-height:1.15;white-space:normal;overflow-wrap:anywhere}
+    nav.toc .subject-choice input{width:13px;height:13px;flex:0 0 auto}
+    nav.toc .filter-actions{display:grid;gap:6px;margin-top:8px}
+    nav.toc .btn{font-size:12px;padding:6px 8px;border-radius:var(--radius)}
+    nav.toc .result-count{display:block;font-size:11.5px;line-height:1.25}
+    .timing-detail{background:#eef8fb;border-left:6px solid var(--accent);padding:10px 12px;border-radius:var(--radius);margin:9px 0;color:#172033}
+    .timing-detail strong{color:#101418}
+    .timing-badge{display:inline-block;border-radius:999px;padding:3px 9px;margin-right:6px;font-size:12px;font-weight:800;background:#e1f3f8;color:#005f73;border:1px solid #8bd2e1}
+    .timing-badge.transfer{background:#edf8e6;color:#315f16;border-color:#a8d671}
+    .timing-badge.basis{background:#fff2cf;color:#7a4a00;border-color:#f6c342}
+    .timing-badge.aufbau{background:#f3e8ff;color:#5d2b91;border-color:#d8b4fe}
+
+    .competence-detail{background:#f9fbfc;border-left:6px solid var(--accent2);padding:11px 12px;border-radius:var(--radius);margin:9px 0;color:#27313d}
+    .competence-detail strong{color:#101418}
+
+    .tag.basis{background:#e1f3f8;border-color:#8bd2e1;color:#005f73}
+    .tag.vertiefung{background:#edf8e6;border-color:#a8d671;color:#315f16}
+    .tag.projekt{background:#f8e4ef;border-color:#eb9ac4;color:#8a1450}
+    .time-detail{background:#fff7e5;border-left:6px solid var(--orange);padding:10px 12px;border-radius:var(--radius);margin:9px 0;color:#3b2a16}
+    .time-detail strong{color:#101418}
+
+    .application-detail{background:#edf8e6;border-left:6px solid var(--accent2);padding:11px 12px;border-radius:var(--radius);margin:10px 0;color:#244a13}
+    .competency-types{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:10px;margin:12px 0}
+    .competency-type{border:1px solid var(--line);border-top:5px solid var(--accent);border-radius:var(--radius);padding:13px;background:#fff}
+    .competency-type:nth-child(2){border-top-color:var(--accent2)}
+    .competency-type:nth-child(3){border-top-color:var(--orange)}
+    .competency-type h3{margin:0 0 6px;font-size:16px;color:#101418}
+    .fachmittel-block{border-top:5px solid var(--accent);padding-top:8px;margin-top:22px}
+    .fachmittel-block:nth-of-type(2n){border-top-color:var(--accent2)}
+    .fachmittel-block:nth-of-type(3n){border-top-color:var(--orange)}
+
+    @media (max-width:1000px){
+      header:before{opacity:.28;right:-40px;top:8px}
+      main{display:block;padding:18px}
+      nav.toc{position:static;margin-bottom:18px;max-height:none}
+      section{margin:0 0 18px;padding:20px}
+    }
+    @media (max-width:700px){
+      .ksab-topline{justify-content:flex-start;flex-wrap:wrap;padding:8px 18px;gap:12px}
+      header{padding:24px 18px 28px}
+      header h1{font-size:30px}
+      table{font-size:13px}
+      th,td{padding:8px}
+    }
+    @media print{
+      body{background:#fff;font-size:12px}
+      .ksab-topline{display:none}
+      header{padding:20px;color:#000;background:#fff;border-bottom:2px solid #000}
+      header:before,header:after{display:none}
+      main{max-width:none;padding:0;display:block}
+      section,nav.toc{box-shadow:none;border-color:#999;break-inside:avoid}
+      nav.toc,.filters{display:none}
+      a{color:#000;text-decoration:underline}
+      .print-note{display:block}
+    }
+
+
+/* Externe Quellenlinks: SharePoint-/OneDrive-tauglich */
+a.external-source {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  font-weight: 700;
+  cursor: pointer;
+  overflow-wrap: anywhere;
+}
+a.external-source::after {
+  content: " ↗";
+  font-weight: 700;
+  color: var(--accent-dark);
+}
+a.external-source:focus {
+  outline: 3px solid rgba(0,138,166,.25);
+  outline-offset: 2px;
+}
+
+.copy-source-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 6px;
+  padding: 2px 7px;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--accent-dark);
+  font: 700 .78rem/1.2 Arial,Helvetica,sans-serif;
+  cursor: pointer;
+  vertical-align: baseline;
+}
+.copy-source-btn:hover,
+.copy-source-btn:focus {
+  border-color: var(--accent);
+  background: var(--soft);
+  outline: none;
+}
+.copy-status {
+  position: fixed;
+  left: 50%;
+  bottom: 18px;
+  transform: translateX(-50%);
+  max-width: min(520px, calc(100vw - 32px));
+  padding: 10px 14px;
+  border: 1px solid var(--line-strong);
+  background: #fff;
+  color: var(--ink);
+  box-shadow: var(--shadow);
+  z-index: 50;
+}
+.copy-status[hidden] { display: none; }
+
+.source-help {
+  margin-top: 10px;
+  font-size: .92rem;
+  color: var(--muted);
+  background: #f8fafc;
+  border-left: 4px solid var(--accent);
+  padding: 10px 12px;
+}
+
+</style>
+</head>
+<body>
+<div class="ksab-topline"><span>ICT · Unterricht · Zyklus 3</span><span>Praxisleitfaden Medien und Informatik</span></div>
+<header>
+<div class="brandline">
+<h1>Praxisleitfaden Medien und Informatik fachübergreifend</h1>
+<p>Nachschlagewerk für Lehrpersonen im Zyklus 3. Ziel: MI-Kompetenzen im Fachunterricht sichtbar stärken, ohne das Fach Medien und Informatik zu ersetzen.</p>
+</div>
+</header>
+<main>
+<nav class="toc"><div class="toc-title">Praxisleitfaden MI</div>
+<div class="sidebar-block" id="fachauswahl">
+<h2>Fachfilter</h2><p class="small">Mehrfachauswahl möglich. Ohne Auswahl werden alle Beispiele angezeigt.</p>
+<div aria-label="Fachauswahl" class="subject-grid">
+<label class="subject-choice"><input name="subjectPick" type="checkbox" value="Deutsch"/> Deutsch</label>
+<label class="subject-choice"><input name="subjectPick" type="checkbox" value="RZG"/> RZG</label>
+<label class="subject-choice"><input name="subjectPick" type="checkbox" value="NT"/> NT</label>
+<label class="subject-choice"><input name="subjectPick" type="checkbox" value="Mathematik"/> Mathematik</label>
+<label class="subject-choice"><input name="subjectPick" type="checkbox" value="BG"/> BG</label>
+<label class="subject-choice"><input name="subjectPick" type="checkbox" value="WAH"/> WAH</label>
+<label class="subject-choice"><input name="subjectPick" type="checkbox" value="ERG"/> ERG</label>
+<label class="subject-choice"><input name="subjectPick" type="checkbox" value="BO"/> BO</label>
+<label class="subject-choice"><input name="subjectPick" type="checkbox" value="Fremdsprachen"/> Fremdsprachen</label>
+<label class="subject-choice"><input name="subjectPick" type="checkbox" value="Musik"/> Musik</label>
+</div>
+<div class="filter-actions"><button class="btn" id="resetSubjectFilter" type="button">Alle anzeigen</button><span class="result-count" id="resultCount">Alle Praxisbeispiele sichtbar.</span></div>
+</div>
+<div class="sidebar-block" id="quartalsauswahl">
+<h2>Quartal / MI-Anschluss</h2><p class="small">Filtert nach dem passenden Transferzeitpunkt.</p>
+<div aria-label="Quartalsauswahl" class="subject-grid quarter-grid">
+<label class="subject-choice"><input name="quarterPick" type="checkbox" value="7Q1"/> 7 Q1</label>
+<label class="subject-choice"><input name="quarterPick" type="checkbox" value="7Q2"/> 7 Q2</label>
+<label class="subject-choice"><input name="quarterPick" type="checkbox" value="7Q3"/> 7 Q3</label>
+<label class="subject-choice"><input name="quarterPick" type="checkbox" value="7Q4"/> 7 Q4</label>
+<label class="subject-choice"><input name="quarterPick" type="checkbox" value="8Q1"/> 8 Q1</label>
+<label class="subject-choice"><input name="quarterPick" type="checkbox" value="8Q2"/> 8 Q2</label>
+<label class="subject-choice"><input name="quarterPick" type="checkbox" value="8Q3"/> 8 Q3</label>
+<label class="subject-choice"><input name="quarterPick" type="checkbox" value="8Q4"/> 8 Q4</label>
+<label class="subject-choice"><input name="quarterPick" type="checkbox" value="9Q1"/> 9 Q1</label>
+<label class="subject-choice"><input name="quarterPick" type="checkbox" value="9Q2"/> 9 Q2</label>
+<label class="subject-choice"><input name="quarterPick" type="checkbox" value="9Q3"/> 9 Q3</label>
+<label class="subject-choice"><input name="quarterPick" type="checkbox" value="9Q4"/> 9 Q4</label>
+</div>
+</div>
+<div class="sidebar-block">
+<h2>Abschnitte</h2>
+<a href="#einsatz">1 Einsatz</a>
+<a href="#faecher">2 Fächerübersicht</a>
+<a href="#kontrolle">3 Lernnachweise</a>
+<a href="#praxis">4 Praxisbeispiele</a>
+<a href="#sprachstarken">5 Fachlehrmittel Details</a>
+<a href="#quellen">6 Quellen und Entwicklung</a>
+<a href="#links">7 Linkverzeichnis</a>
+</div></nav>
+<section id="einsatz">
+<h2>1. Einsatz des Leitfadens</h2>
+<p>Der Leitfaden unterstützt Lehrpersonen aller Fachbereiche dabei, Medien- und Informatikkompetenzen sowie fächerübergreifende Anwendungskompetenzen im bestehenden Fachunterricht gezielt aufzubauen, anzuwenden und zu festigen. Ausgangspunkt bleibt immer der Fachinhalt. Die Kompetenz wird nicht als Zusatzthema behandelt, sondern an einem passenden fachlichen Auftrag sichtbar gemacht.</p>
+<div class="note"><strong>Leselogik:</strong> Zuerst links in der Navigation ein oder mehrere Fächer und bei Bedarf ein Quartal wählen. Danach zeigt die schnelle Fächerübersicht nur passende Einstiege. Im Detailteil bleiben die dazugehörigen Praxisbeispiele mit Kompetenzfokus, MI-Anschluss, Auftrag, Lernprodukt, Zeitbedarf und Link sichtbar.</div>
+<div class="note"><strong>Arbeitsprinzip:</strong> Fachinhalt → MI-Kompetenz → konkreter Auftrag → sichtbarer Nachweis. Eine Kompetenz gilt nur dann als gestärkt, wenn sie im Auftrag bewusst angeleitet und im Lernprodukt erkennbar wird.</div><div class="competency-types"><div class="competency-type"><h3>MI.1 Medien</h3><p>Mediennutzung, Medienwirkung, Medienkritik, Produktion, Veröffentlichung, Kommunikation und Kooperation.</p></div><div class="competency-type"><h3>MI.2 Informatik</h3><p>Datenstrukturen, Algorithmen, Informatiksysteme, sichere Datenverarbeitung, Speicherorte und Verschlüsselung.</p></div><div class="competency-type"><h3>Anwendungskompetenzen</h3><p>Fächerübergreifende Nutzung digitaler Werkzeuge: schreiben, überarbeiten, präsentieren, recherchieren, Quellen nutzen, Tabellenkalkulation, Dateiablage und Zusammenarbeit.</p></div></div><div class="note"><strong>Transferprinzip:</strong> Die Quartalsangaben zeigen den passenden MI-Anschluss: Aufbau im Fach, Festigung nach Connected 3 oder 4, oder schulweite Basis. Damit wird sichtbar, wann ein Fachauftrag eine im MI-Unterricht behandelte Kompetenz gezielt aufnimmt.</div>
+<div class="note"><strong>Zeitangaben:</strong> Der Leitfaden unterscheidet zwischen <em>Quelle nennt</em>, <em>geschätzt</em> und <em>offen</em>. Geschätzte Werte sind Planungshilfen für 45-Minuten-Lektionen und keine gesicherten Angaben der verlinkten Materialien.</div>
+<div class="note"><strong>Quellen und Entwicklung:</strong> Die Grundlagen und der KI-Hinweis sind in Abschnitt 6 ausgewiesen.</div><div class="note"><strong>Quellenlinks in Teams:</strong> Wird der Leitfaden als Teams-Registerkarte angezeigt, können externe Quellenlinks durch Teams blockiert werden. Quellen per Rechtsklick im Browser öffnen oder den Button <strong>Link kopieren</strong> nutzen. Idealer Einsatz: Datei in SharePoint/OneDrive ablegen und über <strong>Im Browser öffnen</strong> verwenden, nicht als Website-Tab.</div>
+<table>
+<thead>
+<tr><th>Umfang</th><th>Geeignete Form</th><th>Sichtbarer Nachweis</th></tr>
+</thead>
+<tbody>
+<tr><td>15 bis 30 Minuten</td><td>Mini-Übung im Fachunterricht</td><td>Checkliste, kurze Reflexion, mündliche Begründung</td></tr>
+<tr><td>1 bis 2 Lektionen</td><td>Fachauftrag mit MI-Fokus</td><td>Quellenblatt, Diagramm, Dateiablage, Bildanalyse, Regelkatalog</td></tr>
+<tr><td>3 bis 5 Lektionen oder mehr</td><td>fächerübergreifendes Produkt oder Projekt</td><td>Medienprodukt, Dossier, Präsentation, Programm, digitale Ausstellung</td></tr>
+</tbody>
+</table>
+<div class="note"><strong>Schulweite Basiskompetenzen und Anwendungskompetenzen:</strong> Dateiablage, Dateinamen, Teilen von Dokumenten, Textüberarbeitung, Präsentieren, Tabellenkalkulation, Recherche sowie Quellen- und Lizenznachweise betreffen alle Fächer. Diese Punkte werden in der Fächerübersicht als „alle Fächer“ oder in den einzelnen Fachbeispielen ausgewiesen und sollen nicht als Zusatzprojekt, sondern als gemeinsamer Mindeststandard genutzt werden.</div>
+</section>
+<section id="faecher"><h2>2. Schnelle Fächerübersicht als Auswahlhilfe</h2>
+<p>Diese Übersicht zeigt pro Fach ausgewählte Einstiege. Zuerst stehen konkrete Praxisbeispiele, danach passende Anschlüsse aus den Fachlehrmitteln. So sieht eine Lehrperson zuerst, welches Lehrmittelkapitel ohnehin im Fachunterricht vorkommt, welche Anwendungskompetenz darin steckt und welches Praxisbeispiel daran anschliessen kann. Die Spalten MI-Anschluss und Funktion machen sichtbar, wann ein Beispiel als Aufbau im Fach, als Festigung nach Connected 3 oder 4 oder als schulweite Basis sinnvoll ist.</p>
+<h3>2.1 Auswahl nach Fach und Praxisbeispiel</h3>
+<table id="subject-overview-table">
+<thead><tr><th>Fach</th><th>Priorität</th><th>Empfohlenes Praxisbeispiel</th><th>MI-Anschluss</th><th>Funktion</th><th>Zeitbedarf</th><th>Sicherheit</th><th>Kompetenzfokus</th><th>Lernprodukt</th></tr></thead>
+<tbody>
+<tr data-quarter="8Q2 9Q4"><td>alle Fächer</td><td><span class="tag basis">Basis</span></td><td><a href="#beispiel-creative-commons-nutzungsrechte">Creative Commons und Nutzungsrechte</a></td><td>8. Klasse Q2 oder 9. Klasse Q4</td><td><span class="timing-badge basis">Schulweite Basis</span></td><td>1 bis 2 Lektionen</td><td>geschätzt</td><td>MI.1.3 e/g</td><td>Quellen- und Lizenznachweis</td></tr>
+<tr data-quarter="7Q1 8Q1"><td>alle Fächer</td><td><span class="tag basis">Basis</span></td><td><a href="#beispiel-daten-speichern-teilen-wiederfinden">Dateien benennen, speichern und teilen</a></td><td>7. Klasse Q1 oder 8. Klasse Q1</td><td><span class="timing-badge basis">Schulweite Basis</span></td><td>1 bis 2 Lektionen</td><td>geschätzt</td><td>MI.2.1 h, MI.2.3 j</td><td>korrekte Dateiablage</td></tr>
+<tr data-quarter="8Q1 9Q2"><td>Deutsch</td><td><span class="tag basis">Basis</span></td><td><a href="#beispiel-nachrichten-vergleichen">Nachrichten lesen und vergleichen</a></td><td>8. Klasse Q1 oder 9. Klasse Q2</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>2 Lektionen</td><td>geschätzt</td><td>MI.1.2 d/e/h</td><td>Medienvergleich</td></tr>
+<tr data-quarter="8Q1 9Q2"><td>Deutsch</td><td><span class="tag vertiefung">Vertiefung</span></td><td><a href="#beispiel-fake-news-pruefen">Fake News prüfen</a></td><td>8. Klasse Q1 oder 9. Klasse Q2</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>2 bis 3 Lektionen</td><td>geschätzt</td><td>MI.1.2 e/h, MI.2.3 i</td><td>Faktencheck</td></tr>
+<tr data-quarter="8Q2"><td>Deutsch</td><td><span class="tag projekt">Projekt</span></td><td><a href="#beispiel-fotostory-bild-text">Fotostory oder Bild-Text-Erzählung</a></td><td>8. Klasse Q2</td><td><span class="timing-badge aufbau">Aufbau im Fach</span></td><td>3 bis 5 Lektionen</td><td>geschätzt</td><td>MI.1.2 g, MI.1.3 f/g</td><td>Fotostory</td></tr>
+<tr data-quarter="8Q1 9Q2"><td>RZG</td><td><span class="tag basis">Basis</span></td><td><a href="#beispiel-bilder-quellen-manipulation">Bilder lesen, Quellen prüfen, Manipulation erkennen</a></td><td>8. Klasse Q1 oder 9. Klasse Q2</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>1 bis 2 Lektionen</td><td>geschätzt</td><td>MI.1.2 e/h</td><td>Bildanalyse</td></tr>
+<tr data-quarter="8Q1 9Q2"><td>RZG</td><td><span class="tag vertiefung">Vertiefung</span></td><td><a href="#beispiel-fake-news-pruefen">Fake News prüfen</a></td><td>8. Klasse Q1 oder 9. Klasse Q2</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>2 bis 3 Lektionen</td><td>geschätzt</td><td>MI.1.2 e/h, MI.2.3 i</td><td>Faktencheck</td></tr>
+<tr data-quarter="8Q1 8Q2"><td>RZG</td><td><span class="tag projekt">Projekt</span></td><td><a href="#beispiel-gegenstand-geschichte">Ein Gegenstand macht Geschichte</a></td><td>8. Klasse Q1 oder Q2</td><td><span class="timing-badge aufbau">Aufbau im Fach</span></td><td>3 bis 5 Lektionen</td><td>geschätzt</td><td>MI.1.2 e, MI.1.3 f, MI.2.1 b</td><td>digitale Zeitleiste</td></tr>
+<tr data-quarter="8Q3"><td>NT</td><td><span class="tag basis">Basis</span></td><td><a href="#beispiel-daten-diagramme-pruefen">Daten erfassen und Diagramme prüfen</a></td><td>8. Klasse Q3</td><td><span class="timing-badge aufbau">Aufbau im Fach</span></td><td>2 bis 3 Lektionen</td><td>geschätzt</td><td>MI.2.1 b/j</td><td>Messdaten-Dossier</td></tr>
+<tr data-quarter="8Q4"><td>NT</td><td><span class="tag vertiefung">Vertiefung</span></td><td><a href="#beispiel-wie-denken-computer">Wie denken Computer?</a></td><td>8. Klasse Q4</td><td><span class="timing-badge aufbau">Aufbau im Fach</span></td><td>1 bis 2 Lektionen</td><td>geschätzt</td><td>MI.2.2 c/e</td><td>Flussdiagramm zu fachlichem Ablauf</td></tr>
+<tr data-quarter="8Q1 8Q2"><td>NT</td><td><span class="tag projekt">Projekt</span></td><td><a href="#beispiel-concept-maps-copy-paste">Concept-Maps gegen Copy-Paste</a></td><td>8. Klasse Q1 oder Q2</td><td><span class="timing-badge aufbau">Aufbau im Fach</span></td><td>2 bis 3 Lektionen</td><td>geschätzt</td><td>MI.1.2 e, MI.2.1 f</td><td>Concept-Map</td></tr>
+<tr data-quarter="7Q1 8Q3"><td>Mathematik</td><td><span class="tag basis">Basis</span></td><td><a href="#beispiel-tabellenkalkulation-rechnungen">Rechnungen mit Tabellenkalkulation kontrollieren</a></td><td>7. Klasse Q1, 8. Klasse Q3</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>2 Lektionen</td><td>geschätzt</td><td>MI.2.1 b/j, MI.2.3 g</td><td>Tabellenblatt</td></tr>
+<tr data-quarter="8Q3"><td>Mathematik</td><td><span class="tag vertiefung">Vertiefung</span></td><td><a href="#beispiel-daten-diagramme-pruefen">Daten erfassen und Diagramme prüfen</a></td><td>8. Klasse Q3</td><td><span class="timing-badge aufbau">Aufbau im Fach</span></td><td>2 bis 3 Lektionen</td><td>geschätzt</td><td>MI.2.1 b/j</td><td>Datendossier</td></tr>
+<tr data-quarter="8Q4 9Q1"><td>Mathematik</td><td><span class="tag vertiefung">Vertiefung</span></td><td><a href="#beispiel-sortiernetzwerke">Sortiernetzwerke als Algorithmus ohne Computer</a></td><td>8. Klasse Q4 oder 9. Klasse Q1</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>3 Lektionen</td><td>geschätzt</td><td>MI.2.2 i</td><td>Algorithmusvergleich mit Messwerten</td></tr>
+<tr data-quarter="8Q2 9Q4"><td>BG</td><td><span class="tag basis">Basis</span></td><td><a href="#beispiel-creative-commons-nutzungsrechte">Creative Commons und Nutzungsrechte</a></td><td>8. Klasse Q2 oder 9. Klasse Q4</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>1 bis 2 Lektionen</td><td>geschätzt</td><td>MI.1.3 e/g</td><td>Lizenznachweis</td></tr>
+<tr data-quarter="7Q4 8Q2 9Q4"><td>BG</td><td><span class="tag vertiefung">Vertiefung</span></td><td><a href="#beispiel-storyboard-erklaervideo">Storyboard und Erklärvideo planen</a></td><td>7. Klasse Q4, 8. Klasse Q2, 9. Klasse Q4</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>2 bis 4 Lektionen</td><td>geschätzt</td><td>MI.1.2 g, MI.1.3 f/g</td><td>Storyboard</td></tr>
+<tr data-quarter="8Q2"><td>BG</td><td><span class="tag projekt">Projekt</span></td><td><a href="#beispiel-fotostory-bild-text">Fotostory oder Bild-Text-Erzählung</a></td><td>8. Klasse Q2</td><td><span class="timing-badge aufbau">Aufbau im Fach</span></td><td>3 bis 5 Lektionen</td><td>geschätzt</td><td>MI.1.2 g, MI.1.3 f/g</td><td>Fotostory</td></tr>
+<tr data-quarter="8Q3 9Q4"><td>WAH</td><td><span class="tag basis">Basis</span></td><td><a href="#beispiel-online-werbung-cookies-konsum">Online-Werbung, Cookies und Konsum</a></td><td>8. Klasse Q3 oder 9. Klasse Q4</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>1 bis 2 Lektionen</td><td>geschätzt</td><td>MI.1.1 e/f, MI.1.2 h/i</td><td>Konsumcheck</td></tr>
+<tr data-quarter="8Q3"><td>WAH</td><td><span class="tag vertiefung">Vertiefung</span></td><td><a href="#beispiel-daten-diagramme-pruefen">Daten erfassen und Diagramme prüfen</a></td><td>8. Klasse Q3</td><td><span class="timing-badge aufbau">Aufbau im Fach</span></td><td>2 bis 3 Lektionen</td><td>geschätzt</td><td>MI.2.1 b/j</td><td>Datendossier</td></tr>
+<tr data-quarter="8Q3"><td>WAH</td><td><span class="tag projekt">Projekt</span></td><td><a href="#beispiel-ressourcenverbrauch-visualisierung">Ressourcenverbrauch und digitale Visualisierung</a></td><td>8. Klasse Q3 oder 9. Klasse Projekt</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>5 bis 8 Lektionen</td><td>geschätzt</td><td>MI.1.3 f/g, MI.2.1 b</td><td>digitale Ausstellung</td></tr>
+<tr data-quarter="7Q2 8Q1 9Q2"><td>ERG</td><td><span class="tag basis">Basis</span></td><td><a href="#beispiel-social-media-cybermobbing-klassenchat">Social Media, Cybermobbing und Klassenchat</a></td><td>7. Klasse Q2, 8. Klasse Q1 oder 9. Klasse Q2</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>2 bis 3 Lektionen</td><td>geschätzt</td><td>MI.1.1 c/d/e, MI.1.4 c</td><td>Regelkatalog</td></tr>
+<tr data-quarter="7Q2 8Q1 9Q4"><td>ERG</td><td><span class="tag vertiefung">Vertiefung</span></td><td><a href="#beispiel-cybermobbing-rollen">Cybermobbing: Rollen, Handlungsmöglichkeiten, Meldestellen</a></td><td>7. Klasse Q2, 8. Klasse Q1 oder 9. Klasse Q4</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>2 Lektionen</td><td>geschätzt</td><td>MI.1.1 c/e</td><td>Fallanalyse</td></tr>
+<tr data-quarter="8Q4 9Q4"><td>ERG</td><td><span class="tag projekt">Projekt</span></td><td><a href="#beispiel-datenschutz-digitale-identitaet">Datenschutz und digitale Identität</a></td><td>8. Klasse Q4 oder 9. Klasse Q4</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>offen</td><td>offen</td><td>MI.1.1 e, MI.2.3 j/n</td><td>Datenschutz-Checkliste</td></tr>
+<tr data-quarter="7Q1 8Q1"><td>BO</td><td><span class="tag basis">Basis</span></td><td><a href="#beispiel-daten-speichern-teilen-wiederfinden">Digitale Bewerbungsmappe sauber ablegen</a></td><td>7. Klasse Q1 oder 8. Klasse Q1</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>2 Lektionen</td><td>geschätzt</td><td>MI.2.1 h, MI.2.3 j</td><td>Bewerbungsordner mit Dateistandard</td></tr>
+<tr data-quarter="8Q4 9Q4"><td>BO</td><td><span class="tag vertiefung">Vertiefung</span></td><td><a href="#beispiel-datenschutz-digitale-identitaet">Datenschutz und digitale Identität</a></td><td>8. Klasse Q4 oder 9. Klasse Q4</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>offen</td><td>offen</td><td>MI.1.1 e, MI.2.3 j/n</td><td>Checkliste Online-Reputation</td></tr>
+<tr data-quarter="8Q3 9Q4"><td>BO</td><td><span class="tag vertiefung">Vertiefung</span></td><td><a href="#beispiel-online-werbung-cookies-konsum">Online-Reputation und Datenspuren im Bewerbungsprozess</a></td><td>8. Klasse Q3 oder 9. Klasse Q4</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>1 bis 2 Lektionen</td><td>geschätzt</td><td>MI.1.1 e/f, MI.2.3 j</td><td>Checkliste Online-Reputation</td></tr>
+<tr data-quarter="8Q2 9Q4"><td>Fremdsprachen</td><td><span class="tag basis">Basis</span></td><td><a href="#beispiel-creative-commons-nutzungsrechte">Creative Commons und Nutzungsrechte</a></td><td>8. Klasse Q2 oder 9. Klasse Q4</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>1 bis 2 Lektionen</td><td>geschätzt</td><td>MI.1.3 e/g</td><td>Quellen- und Lizenznachweis</td></tr>
+<tr data-quarter="8Q2 9Q4"><td>Fremdsprachen</td><td><span class="tag vertiefung">Vertiefung</span></td><td><a href="#beispiel-internet-safety-fremdsprachen">Internet Safety in English oder Französisch</a></td><td>8. Klasse Q2 oder 9. Klasse Q4</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>3 bis 5 Lektionen</td><td>geschätzt</td><td>MI.1.1 d/e, MI.1.3 f</td><td>Safety-Poster oder Video</td></tr>
+<tr data-quarter="8Q2"><td>Fremdsprachen</td><td><span class="tag projekt">Projekt</span></td><td><a href="#beispiel-qr-lesespur">QR-Lesespur im Schulhaus oder Quartier</a></td><td>8. Klasse Q2 oder 9. Klasse Projekt</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>4 bis 8 Lektionen</td><td>geschätzt</td><td>MI.1.3 f, MI.1.4 e, MI.2.1 h</td><td>QR-Lesespur</td></tr>
+<tr data-quarter="8Q2 9Q4"><td>Musik</td><td><span class="tag basis">Basis</span></td><td><a href="#beispiel-creative-commons-nutzungsrechte">Creative Commons und Nutzungsrechte</a></td><td>8. Klasse Q2 oder 9. Klasse Q4</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>1 bis 2 Lektionen</td><td>geschätzt</td><td>MI.1.3 e/g</td><td>Lizenznachweis für Sounds</td></tr>
+<tr data-quarter="8Q2 9Q4"><td>Musik</td><td><span class="tag vertiefung">Vertiefung</span></td><td><a href="#beispiel-podcast-audiobeitrag">Podcast oder Audiobeitrag</a></td><td>8. Klasse Q2 oder 9. Klasse Q4</td><td><span class="timing-badge transfer">Festigung nach MI</span></td><td>3 bis 5 Lektionen</td><td>geschätzt</td><td>MI.1.3 f/g</td><td>Podcast oder Jingle</td></tr>
+</tbody>
+</table>
+<h3>2.2 Anschluss an Fachlehrmittel</h3>
+<p>Diese Kurzübersicht verbindet laufende Kapitel aus Fachlehrmitteln mit passenden Anwendungskompetenzen und Praxisbeispielen. Sie ist bewusst knapp gehalten. Die ausführliche Herleitung steht in Abschnitt 5.</p>
+<div class="fachmittel-block" data-fach="Deutsch">
+<table class="lehrmittel-quick-table">
+<thead><tr><th>Fach</th><th>Schuljahr</th><th>Lehrmittelkapitel</th><th>Anwendungskompetenz</th><th>passendes Praxisbeispiel</th><th>Details</th></tr></thead>
+<tbody>
+<tr class="fachmittel-row" data-quarter="7Q3"><td>Deutsch</td><td>7. Klasse</td><td>Sprachstarken 7: Medien nutzen</td><td>Tabellen und Diagramme lesen und erstellen; audiovisuelle Information auswerten; Pressemitteilung mit Zeitungsbericht vergleichen.</td><td><a href="#beispiel-daten-diagramme-pruefen">Daten erfassen und Diagramme prüfen</a>; <a href="#beispiel-nachrichten-vergleichen">Nachrichten lesen und vergleichen</a></td><td><a href="#fachmittel-deutsch">Sprachstarken</a></td></tr>
+<tr class="fachmittel-row" data-quarter="8Q3"><td>Deutsch</td><td>8. Klasse</td><td>Sprachstarken 8: Suchen und finden im Internet</td><td>Suchstrategien ausbauen; Suchmaschinen und Wikipedia verstehen; Qualität von Websites und Internettexten einschätzen.</td><td><a href="#beispiel-fake-news-pruefen">Fake News prüfen</a>; <a href="#beispiel-nachrichten-vergleichen">Nachrichten lesen und vergleichen</a></td><td><a href="#fachmittel-deutsch">Sprachstarken</a></td></tr>
+<tr class="fachmittel-row" data-quarter="9Q3"><td>Deutsch</td><td>9. Klasse</td><td>Sprachstarken 9: Seiten gestalten; Korrekturprogramm; Präsentationen</td><td>Text lesefreundlich gestalten; Bild und Text anordnen; Korrekturhilfen nutzen und beurteilen; Präsentationsfolien gestalten.</td><td><a href="#beispiel-fotostory-bild-text">Fotostory oder Bild-Text-Erzählung</a>; <a href="#beispiel-creative-commons-nutzungsrechte">Creative Commons und Nutzungsrechte</a></td><td><a href="#fachmittel-deutsch">Sprachstarken</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="fachmittel-block" data-fach="Mathematik">
+<table class="lehrmittel-quick-table">
+<thead><tr><th>Fach</th><th>Schuljahr</th><th>Lehrmittelkapitel</th><th>Anwendungskompetenz</th><th>passendes Praxisbeispiel</th><th>Details</th></tr></thead>
+<tbody>
+<tr class="fachmittel-row" data-quarter="7Q1 7Q2 7Q3 7Q4"><td>Mathematik</td><td>7. Klasse</td><td>Mathematik 1: Daten darstellen; Koordinaten; Grössen und Prozente</td><td>Daten ordnen, darstellen, Diagramme lesen und digitale Tabellen als Rechen- und Kontrollwerkzeug nutzen.</td><td><a href="#beispiel-tabellenkalkulation-rechnungen">Rechnungen mit Tabellenkalkulation kontrollieren</a>; <a href="#beispiel-daten-diagramme-pruefen">Daten erfassen und Diagramme prüfen</a></td><td><a href="#fachmittel-mathematik">Mathematik 1–3</a></td></tr>
+<tr class="fachmittel-row" data-quarter="8Q1 8Q2 8Q3 8Q4"><td>Mathematik</td><td>8. Klasse</td><td>Mathematik 2: Statistik, Budget, Simulationen</td><td>Tabellenkalkulation für Daten, Budget, Kennwerte und Simulationen nutzen; Resultate vergleichen und kommentieren.</td><td><a href="#beispiel-daten-diagramme-pruefen">Daten erfassen und Diagramme prüfen</a>; <a href="#beispiel-tabellenkalkulation-rechnungen">Rechnungen mit Tabellenkalkulation kontrollieren</a></td><td><a href="#fachmittel-mathematik">Mathematik 1–3</a></td></tr>
+<tr class="fachmittel-row" data-quarter="9Q1 9Q2 9Q3 9Q4"><td>Mathematik</td><td>9. Klasse</td><td>Mathematik 3: Funktionen, Umfrage, Konsumkredit, Leasing</td><td>Funktionen und Finanzdaten darstellen; Umfragen auswerten; Daten als Entscheidungsgrundlage nutzen.</td><td><a href="#beispiel-daten-diagramme-pruefen">Daten erfassen und Diagramme prüfen</a>; <a href="#beispiel-sortiernetzwerke">Sortiernetzwerke als Algorithmus ohne Computer</a></td><td><a href="#fachmittel-mathematik">Mathematik 1–3</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="fachmittel-block" data-fach="NT">
+<table class="lehrmittel-quick-table">
+<thead><tr><th>Fach</th><th>Schuljahr</th><th>Lehrmittelkapitel</th><th>Anwendungskompetenz</th><th>passendes Praxisbeispiel</th><th>Details</th></tr></thead>
+<tbody>
+<tr class="fachmittel-row" data-quarter="7Q1 7Q2 7Q3 7Q4"><td>NT</td><td>7. Klasse</td><td>Prisma 1: Arbeiten und Forschen; Experimentierprotokoll; Recherchieren</td><td>Experimente planen, beobachten, protokollieren, recherchieren und Messwerte digital festhalten.</td><td><a href="#beispiel-daten-diagramme-pruefen">Daten erfassen und Diagramme prüfen</a>; <a href="#beispiel-concept-maps-copy-paste">Concept-Maps gegen Copy-Paste</a></td><td><a href="#fachmittel-nt">Prisma 1–3</a></td></tr>
+<tr class="fachmittel-row" data-quarter="8Q1 8Q2 8Q3 8Q4"><td>NT</td><td>8. Klasse</td><td>Prisma 2: Variablenkontrolle; Technikzyklus; Kräfte; Optik</td><td>Variablen kontrollieren, Messdaten auswerten, technische Abläufe darstellen und Modelle nutzen.</td><td><a href="#beispiel-daten-diagramme-pruefen">Daten erfassen und Diagramme prüfen</a>; <a href="#beispiel-wie-denken-computer">Wie denken Computer?</a></td><td><a href="#fachmittel-nt">Prisma 1–3</a></td></tr>
+<tr class="fachmittel-row" data-quarter="9Q1 9Q2 9Q3 9Q4"><td>NT</td><td>9. Klasse</td><td>Prisma 3: CO₂-Bilanz; Messen, Steuern, Regeln; Sensoren</td><td>Daten erfassen und bewerten; Sensoren und Steuer- oder Regelprozesse beschreiben; naturwissenschaftliche Entscheidungen begründen.</td><td><a href="#beispiel-wie-denken-computer">Wie denken Computer?</a>; <a href="#beispiel-daten-diagramme-pruefen">Daten erfassen und Diagramme prüfen</a></td><td><a href="#fachmittel-nt">Prisma 1–3</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="fachmittel-block" data-fach="RZG">
+<table class="lehrmittel-quick-table">
+<thead><tr><th>Fach</th><th>Schuljahr</th><th>Lehrmittelkapitel</th><th>Anwendungskompetenz</th><th>passendes Praxisbeispiel</th><th>Details</th></tr></thead>
+<tbody>
+<tr class="fachmittel-row" data-quarter="7Q1 7Q2 7Q3 7Q4"><td>RZG</td><td>7. Klasse</td><td>Durchblick 1</td><td>Karten, Bilder, Sachtexte und einfache Quellen erschliessen; Ergebnisse visuell darstellen.</td><td><a href="#beispiel-bilder-quellen-manipulation">Bilder lesen, Quellen prüfen, Manipulation erkennen</a>; <a href="#beispiel-gegenstand-geschichte">Ein Gegenstand macht Geschichte</a></td><td><a href="#fachmittel-rzg">Durchblick 1/2</a></td></tr>
+<tr class="fachmittel-row" data-quarter="8Q1 8Q2 8Q3 8Q4"><td>RZG</td><td>8. Klasse</td><td>Durchblick 1 bis erstes Semester; Durchblick 2 ab zweitem Semester</td><td>Informationen aus Karten, Bildern, Texten und Diagrammen kombinieren; Rechercheergebnisse begründet darstellen.</td><td><a href="#beispiel-fake-news-pruefen">Fake News prüfen</a>; <a href="#beispiel-bilder-quellen-manipulation">Bilder lesen, Quellen prüfen, Manipulation erkennen</a></td><td><a href="#fachmittel-rzg">Durchblick 1/2</a></td></tr>
+<tr class="fachmittel-row" data-quarter="9Q1 9Q2 9Q3 9Q4"><td>RZG</td><td>9. Klasse</td><td>Durchblick 2</td><td>Komplexere Quellen und Darstellungen auswerten; Medien und Daten für historische oder geografische Fragestellungen nutzen.</td><td><a href="#beispiel-fake-news-pruefen">Fake News prüfen</a>; <a href="#beispiel-gegenstand-geschichte">Ein Gegenstand macht Geschichte</a></td><td><a href="#fachmittel-rzg">Durchblick 1/2</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="fachmittel-block" data-fach="Fremdsprachen">
+<table class="lehrmittel-quick-table">
+<thead><tr><th>Fach</th><th>Schuljahr</th><th>Lehrmittelkapitel</th><th>Anwendungskompetenz</th><th>passendes Praxisbeispiel</th><th>Details</th></tr></thead>
+<tbody>
+<tr class="fachmittel-row" data-quarter="7Q1 7Q2 7Q3 7Q4"><td>Fremdsprachen</td><td>7. Klasse</td><td>dis donc! 7: Unités und Lernplattform</td><td>Digitale Hör- und Lesetexte nutzen, Wortschatz digital üben, kurze Audio- oder Schreibprodukte ablegen.</td><td><a href="#beispiel-internet-safety-fremdsprachen">Internet Safety in English oder Französisch</a>; <a href="#beispiel-creative-commons-nutzungsrechte">Creative Commons und Nutzungsrechte</a></td><td><a href="#fachmittel-fremdsprachen">dis donc! 7–9</a></td></tr>
+<tr class="fachmittel-row" data-quarter="8Q1 8Q2 8Q3 8Q4"><td>Fremdsprachen</td><td>8. Klasse</td><td>dis donc! 8: Präsentieren, Schreiben, Sprachmittlung</td><td>Informationen aus fremdsprachigen Medien entnehmen, Kurzpräsentationen vorbereiten, Texte digital überarbeiten.</td><td><a href="#beispiel-internet-safety-fremdsprachen">Internet Safety in English oder Französisch</a>; <a href="#beispiel-qr-lesespur">QR-Lesespur im Schulhaus oder Quartier</a></td><td><a href="#fachmittel-fremdsprachen">dis donc! 7–9</a></td></tr>
+<tr class="fachmittel-row" data-quarter="9Q1 9Q2 9Q3 9Q4"><td>Fremdsprachen</td><td>9. Klasse</td><td>dis donc! 9: frei kombinierbare Module</td><td>Projektartig arbeiten, digitale Medien für Sprachproduktion nutzen, Lernprodukte sammeln und überarbeiten.</td><td><a href="#beispiel-qr-lesespur">QR-Lesespur im Schulhaus oder Quartier</a>; <a href="#beispiel-internet-safety-fremdsprachen">Internet Safety in English oder Französisch</a></td><td><a href="#fachmittel-fremdsprachen">dis donc! 7–9</a></td></tr>
+</tbody>
+</table>
+</div>
+</section>
+<section id="kontrolle">
+<h2>3. Einfache Lernnachweise nach Schuljahr</h2>
+<table>
+<thead><tr><th>Schuljahr</th><th>Lernnachweis</th><th>Kompetenzen</th><th>Durchführung</th></tr></thead>
+<tbody>
+<tr><td>7. Klasse</td><td>Digitale Arbeitsprobe</td><td>MI.1.4, MI.2.1, MI.2.3</td><td>Dokument erstellen, speichern, teilen, korrekt benennen, kurze Regelreflexion.</td></tr>
+<tr><td>7. Klasse</td><td>Bild- und Medienanalyse</td><td>MI.1.2, MI.1.3</td><td>Bildwirkung oder Werbung analysieren, eigenes Bildprodukt gestalten, Rechte klären.</td></tr>
+<tr><td>8. Klasse</td><td>Recherche- und Quellencheck</td><td>MI.1.2, MI.2.3</td><td>Drei Quellen prüfen, Suchstrategie dokumentieren, Qualität begründen.</td></tr>
+<tr><td>8. Klasse</td><td>Datenprojekt</td><td>MI.2.1</td><td>Daten erfassen, bereinigen, Diagramm erstellen, Aussage formulieren.</td></tr>
+<tr><td>8. Klasse</td><td>Kooperatives Medienprodukt</td><td>MI.1.3, MI.1.4</td><td>Fotostory, Präsentation, Podcast oder Video mit Rollen, Feedback und Quellen.</td></tr>
+<tr><td>9. Klasse</td><td>Algorithmusvergleich</td><td>MI.2.2</td><td>Such- oder Sortierverfahren erklären, vergleichen und auf Fachproblem übertragen.</td></tr>
+<tr><td>9. Klasse</td><td>Datenschutz- oder Fake-News-Check</td><td>MI.1.1, MI.1.2, MI.2.3</td><td>Fallanalyse mit Handlungsempfehlung.</td></tr>
+</tbody>
+</table>
+</section>
+<section id="praxis">
+<h2>4. Praxisbeispiele für den Fachunterricht</h2><table id="kategorie-summary"><thead><tr><th>Kategorie</th><th>Kennzeichnung</th><th>Nutzen für Fachlehrpersonen</th></tr></thead><tbody><tr><td>fertige Planung</td><td>blau</td><td>direkt als Unterrichtseinheit oder Sequenz einsetzbar</td></tr><tr><td>Arbeitsblatt/Material</td><td>gelb</td><td>Material, Arbeitsblatt, Dossier oder Modul, das in einen Fachauftrag eingebettet wird</td></tr><tr><td>Projektidee</td><td>violett</td><td>grösseres Vorhaben mit Anpassung an Fach, Zeitgefäss und Klasse</td></tr></tbody></table>
+<div class="filters">
+<input id="search" placeholder="Suche: Thema, Kompetenz, Produkt" type="search"/>
+<select id="miFilter"><option value="">Alle Kompetenzen</option><option>MI.1.1</option><option>MI.1.2</option><option>MI.1.3</option><option>MI.1.4</option><option>MI.2.1</option><option>MI.2.2</option><option>MI.2.3</option></select>
+<select id="categoryFilter"><option value="">Alle Kategorien</option><option value="fertige Planung">fertige Planung</option><option value="Arbeitsblatt/Material">Arbeitsblatt/Material</option><option value="Projektidee">Projektidee</option></select></div><div class="legend"><span class="cat cat-planung">fertige Planung: direkt nutzbare Unterrichtseinheit</span><span class="cat cat-material">Arbeitsblatt/Material: einzelne Materialien, Dossiers oder Aufgaben</span><span class="cat cat-projekt">Projektidee: grössere Sequenz mit Anpassungsbedarf</span></div>
+<div class="example" data-fach="alle Fächer BO" data-kategorie="fertige Planung" data-mi="MI.1.4 MI.2.1 MI.2.3" data-quarter="7Q1 8Q1" id="beispiel-daten-speichern-teilen-wiederfinden">
+<h3>Daten speichern, teilen und wiederfinden <span class="meta">MI-Anschluss: 7. Klasse Q1 oder 8. Klasse Q1</span></h3><p class="category-line"><span class="cat cat-planung">Kategorie: fertige Planung</span></p><p class="timing-detail"><span class="timing-badge basis">Schulweite Basis</span><strong>MI-Anschluss:</strong> 7. Klasse Q1 oder 8. Klasse Q1. <strong>Funktion:</strong> Jederzeit als gemeinsamer Mindeststandard einsetzbar.</p><p class="time-detail"><strong>Zeitbedarf:</strong> Quelle nennt für die ganze Einheit mehr als 5 Lektionen; reduzierter Einsatz im Fachunterricht: 1 bis 2 Lektionen, geschätzt. <strong>Sicherheit:</strong> Quelle und Schätzung. <strong>Begründung:</strong> Die vollständige Einheit ist mehrteilig. Für Fachunterricht werden nur Dateibenennung, Ablage, Teilen und Speicherorte genutzt.</p>
+<p><strong>Fächer:</strong> alle Fächer, BO, Deutsch. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/wie-speichere-und-teile-ich-meine-daten" href="https://www.zebis.ch/unterrichtsmaterial/wie-speichere-und-teile-ich-meine-daten" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/wie-speichere-und-teile-ich-meine-daten">zebis: Wie speichere und teile ich meine Daten?</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.2.1 h, MI.2.1 k, MI.2.3 j. <em>Erweiterung:</em> MI.1.4 b.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.2.1 h:</strong> Dokumente so ablegen, dass auch andere sie wieder finden. <strong>MI.2.1 k:</strong> Methoden zur Datenreplikation unterscheiden und anwenden, insbesondere Backup, Synchronisation und Versionierung. <strong>MI.2.3 j:</strong> lokale Geräte, lokales Netzwerk und Internet als Speicherorte für private und öffentliche Daten unterscheiden. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.4 b:</strong> Medien für gemeinsames Arbeiten und Meinungsaustausch einsetzen und Sicherheitsregeln befolgen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Dateien benennen, sinnvoll ablegen, teilen, wiederfinden und Speicherorte unterscheiden.</p>
+<ol class="steps"><li>Dateinamen nach Schulstandard festlegen.</li><li>Ordnerstruktur für ein Fach oder Projekt erstellen.</li><li>Datei lokal, in OneDrive und in Teams unterscheiden.</li><li>Kontrollverlust beim Teilen von Fotos oder Dokumenten besprechen.</li><li>Mini-Check: fremde Person findet die Datei in 30 Sekunden.</li></ol>
+<p><strong>Lernprodukt:</strong> strukturierter Projektordner mit Dateinamen, Version und kurzer Backup-Erklärung.</p>
+</div>
+<div class="example" data-fach="Deutsch BG Fremdsprachen" data-kategorie="fertige Planung" data-mi="MI.1.2 MI.1.3 MI.1.4" data-quarter="8Q2 9Q3" id="beispiel-fotostory-bild-text">
+<h3>Fotostory oder Bild-Text-Erzählung <span class="meta">MI-Anschluss: 8. Klasse Q2</span></h3><p class="category-line"><span class="cat cat-planung">Kategorie: fertige Planung</span></p><p class="timing-detail"><span class="timing-badge aufbau">Aufbau im Fach</span><strong>MI-Anschluss:</strong> 8. Klasse Q2. <strong>Funktion:</strong> Brücke zwischen Connected 3 und Connected 4; fehlende oder schwach gesicherte Kompetenzen werden im Fachunterricht aufgebaut.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 3 bis 5 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Planung, Bildproduktion, Layout, Quellenangabe und Überarbeitung.</p>
+<p><strong>Fächer:</strong> Deutsch, BG, Fremdsprachen. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.mia4u.ch/katalog/produktion-und-praesentation" href="https://www.mia4u.ch/katalog/produktion-und-praesentation" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.mia4u.ch/katalog/produktion-und-praesentation">mia4u: Fotostory im Bereich Produktion und Präsentation</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.2 g, MI.1.3 f, MI.1.3 g. <em>Erweiterung:</em> MI.1.4 d.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.2 g:</strong> grundlegende Elemente der Bild-, Film- und Fernsehsprache kennen und ihre Funktion reflektieren. <strong>MI.1.3 f:</strong> Medien nutzen, um Gedanken und Wissen vor Publikum zu präsentieren oder zu veröffentlichen, und Wirkung eigener Beiträge berücksichtigen. <strong>MI.1.3 g:</strong> mit eigenen und fremden Inhalten Medienbeiträge herstellen und rechtliche Rahmenbedingungen sowie Sicherheits- und Verhaltensregeln berücksichtigen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.4 d:</strong> Medien gezielt für kooperatives Lernen nutzen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Text, Bild und Layout zielgerichtet verbinden; Bildquellen korrekt dokumentieren; Präsentationsmedien nutzen.</p>
+<ol class="steps"><li>Kurzhandlung planen.</li><li>Storyboard mit Einstellungsgrössen erstellen.</li><li>Fotos erstellen oder lizenzkonforme Bilder verwenden.</li><li>Text, Bildausschnitt und Reihenfolge begründen.</li><li>Feedback digital einholen und überarbeiten.</li></ol>
+<p><strong>Lernprodukt:</strong> Fotostory als PDF, Präsentation oder BookCreator-Datei mit Quellen und Reflexion zur Bildwirkung.</p>
+</div>
+<div class="example" data-fach="Deutsch RZG ERG" data-kategorie="Arbeitsblatt/Material" data-mi="MI.1.1 MI.1.2 MI.2.3" data-quarter="8Q1 8Q2 8Q3 8Q4 9Q1 9Q2 9Q3 9Q4" id="beispiel-fake-news-pruefen">
+<h3>Fake News prüfen <span class="meta">MI-Anschluss: 8. Klasse Q1 oder 9. Klasse Q2</span></h3><p class="category-line"><span class="cat cat-material">Kategorie: Arbeitsblatt/Material</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q1 oder 9. Klasse Q2. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 2 bis 3 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Recherche, Gegenquelle, Quellenprotokoll und Urteil.</p>
+<p><strong>Fächer:</strong> Deutsch, RZG, ERG. <strong>Quellen:</strong> <a class="external-source" data-url="https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1" href="https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1">SRF school: Was sind Fake News?</a>, <a class="external-source" data-url="https://www.srf.ch/sendungen/school/medien-und-informatik/erkennst-du-die-fake-news-interaktives-game-news-check" href="https://www.srf.ch/sendungen/school/medien-und-informatik/erkennst-du-die-fake-news-interaktives-game-news-check" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.srf.ch/sendungen/school/medien-und-informatik/erkennst-du-die-fake-news-interaktives-game-news-check">SRF News Check</a>, <a class="external-source" data-url="https://www.iqesonline.net/bildung-digital/checknews/" href="https://www.iqesonline.net/bildung-digital/checknews/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.iqesonline.net/bildung-digital/checknews/">CheckNews</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.2 e, MI.1.2 h, MI.2.3 i. <em>Erweiterung:</em> MI.1.1 g.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.2 e:</strong> Informationen aus verschiedenen Quellen gezielt beschaffen, auswählen und hinsichtlich Qualität und Nutzen beurteilen. <strong>MI.1.2 h:</strong> Absicht hinter Medienbeiträgen einschätzen. <strong>MI.2.3 i:</strong> grundsätzliche Funktionsweise von Suchmaschinen verstehen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.1 g:</strong> Funktion und Bedeutung der Medien für Kultur, Wirtschaft und Politik beschreiben.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>gezielt recherchieren, Suchresultate vergleichen, Quellen beurteilen und Prüfergebnisse dokumentieren.</p>
+<ol class="steps"><li>Aktuelle Meldung auswählen.</li><li>Quelle, Autor, Datum, Bildherkunft und Absicht prüfen.</li><li>Gegenquelle suchen.</li><li>Suchstrategie dokumentieren.</li><li>Urteil formulieren: zuverlässig, unklar oder manipulativ.</li></ol>
+<p><strong>Lernprodukt:</strong> Faktencheck mit Quellenprotokoll und kurzer mündlicher Begründung.</p>
+</div>
+<div class="example" data-fach="Deutsch RZG" data-kategorie="Arbeitsblatt/Material" data-mi="MI.1.2" data-quarter="7Q3 8Q1 8Q3 9Q2" id="beispiel-nachrichten-vergleichen">
+<h3>Nachrichten lesen und vergleichen <span class="meta">MI-Anschluss: 8. Klasse Q1 oder 9. Klasse Q2</span></h3><p class="category-line"><span class="cat cat-material">Kategorie: Arbeitsblatt/Material</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q1 oder 9. Klasse Q2. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 2 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> zwei Beiträge vergleichen und Urteil tabellarisch begründen.</p>
+<p><strong>Fächer:</strong> Deutsch, RZG. <strong>Quellen:</strong> <a class="external-source" data-url="https://www.iqesonline.net/bildung-digital/checknews/" href="https://www.iqesonline.net/bildung-digital/checknews/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.iqesonline.net/bildung-digital/checknews/">CheckNews</a>, <a class="external-source" data-url="https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1" href="https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1">SRF school: Medienkompetenz und Fake News</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.2 d, MI.1.2 e, MI.1.2 h. <em>Erweiterung:</em> MI.1.2 i.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.2 d:</strong> Grundfunktionen der Medien benennen und Mischformen erkennen. <strong>MI.1.2 e:</strong> Informationen aus verschiedenen Quellen gezielt beschaffen, auswählen und hinsichtlich Qualität und Nutzen beurteilen. <strong>MI.1.2 h:</strong> Absicht hinter Medienbeiträgen einschätzen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.2 i:</strong> Organisations- und Finanzierungsformen von Medienangeboten und deren Konsequenzen kennen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Medienbeiträge lesen, vergleichen, Informationen auswählen und Quellen nachvollziehbar festhalten.</p>
+<ol class="steps"><li>Zwei Beiträge zum gleichen Thema lesen.</li><li>Informationsfunktion, Meinungsbildung und Unterhaltung unterscheiden.</li><li>Belege, Sprache, Bildwahl und Zielpublikum vergleichen.</li><li>Nutzen und Qualität einschätzen.</li></ol>
+<p><strong>Lernprodukt:</strong> Medienvergleich als Tabelle mit begründetem Urteil.</p>
+</div>
+<div class="example" data-fach="Deutsch NT Mathematik WAH" data-kategorie="fertige Planung" data-mi="MI.2.1" data-quarter="7Q1 7Q2 7Q3 7Q4 8Q1 8Q2 8Q3 8Q4 9Q1 9Q2 9Q3 9Q4" id="beispiel-daten-diagramme-pruefen">
+<h3>Daten erfassen und Diagramme prüfen <span class="meta">MI-Anschluss: 8. Klasse Q3</span></h3><p class="category-line"><span class="cat cat-planung">Kategorie: fertige Planung</span></p><p class="timing-detail"><span class="timing-badge aufbau">Aufbau im Fach</span><strong>MI-Anschluss:</strong> 8. Klasse Q3. <strong>Funktion:</strong> Brücke zwischen Connected 3 und Connected 4; fehlende oder schwach gesicherte Kompetenzen werden im Fachunterricht aufgebaut.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 2 bis 3 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Daten erfassen, bereinigen, Diagramm wählen und interpretieren.</p>
+<p><strong>Fächer:</strong> Mathematik, NT, WAH. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.mia4u.ch/katalog" href="https://www.mia4u.ch/katalog" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.mia4u.ch/katalog">mia4u Katalog: Diagramme und Daten</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.2.1 b, MI.2.1 j. <em>Erweiterung:</em> MI.2.1 h.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.2.1 b:</strong> unterschiedliche Darstellungsformen für Daten verwenden. <strong>MI.2.1 j:</strong> Daten in einer Datenbank strukturieren, erfassen, suchen und automatisiert auswerten. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.2.1 h:</strong> Dokumente so ablegen, dass auch andere sie wieder finden.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Tabellenkalkulation nutzen, Daten erfassen, Diagramme erstellen und Aussagen aus Daten formulieren.</p>
+<ol class="steps"><li>Fachliche Frage formulieren.</li><li>Daten über Umfrage oder Messreihe erfassen.</li><li>Tabelle bereinigen und Diagramm wählen.</li><li>Ein irreführendes Diagramm erzeugen und entlarven.</li><li>Interpretation fachlich korrekt formulieren.</li></ol>
+<p><strong>Lernprodukt:</strong> Datendossier mit Tabelle, Diagrammvergleich und Interpretation.</p>
+</div>
+<div class="example" data-fach="Deutsch BG" data-kategorie="Arbeitsblatt/Material" data-mi="MI.1.2 MI.1.3 MI.1.4" data-quarter="7Q4 8Q2 9Q4" id="beispiel-storyboard-erklaervideo">
+<h3>Storyboard und Erklärvideo planen <span class="meta">MI-Anschluss: 7. Klasse Q4, 8. Klasse Q2, 9. Klasse Q4</span></h3><p class="category-line"><span class="cat cat-material">Kategorie: Arbeitsblatt/Material</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 7. Klasse Q4, 8. Klasse Q2, 9. Klasse Q4. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 2 bis 4 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Skript, Storyboard und kurzer Medienbeitrag.</p>
+<p><strong>Fächer:</strong> BG, Deutsch, Fremdsprachen. <strong>Quellen:</strong> <a class="external-source" data-url="https://lehrerfortbildung-bw.de/st_digital/medienwerkstatt/multimedia/video-im-unterricht/baum/jobs/story/" href="https://lehrerfortbildung-bw.de/st_digital/medienwerkstatt/multimedia/video-im-unterricht/baum/jobs/story/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://lehrerfortbildung-bw.de/st_digital/medienwerkstatt/multimedia/video-im-unterricht/baum/jobs/story/">Storyboardzeichner</a>, <a class="external-source" data-url="https://digileb.phbern.ch/medien-gestalten-und-nutzen/medien-gestalten/lehr-lernfilm/" href="https://digileb.phbern.ch/medien-gestalten-und-nutzen/medien-gestalten/lehr-lernfilm/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://digileb.phbern.ch/medien-gestalten-und-nutzen/medien-gestalten/lehr-lernfilm/">PHBern: Lehr-Lernfilm</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.2 g, MI.1.3 f, MI.1.3 g. <em>Erweiterung:</em> MI.1.4 d.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.2 g:</strong> grundlegende Elemente der Bild-, Film- und Fernsehsprache kennen und ihre Funktion reflektieren. <strong>MI.1.3 f:</strong> Medien nutzen, um Gedanken und Wissen vor Publikum zu präsentieren oder zu veröffentlichen, und Wirkung eigener Beiträge berücksichtigen. <strong>MI.1.3 g:</strong> mit eigenen und fremden Inhalten Medienbeiträge herstellen und rechtliche Rahmenbedingungen sowie Sicherheits- und Verhaltensregeln berücksichtigen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.4 d:</strong> Medien gezielt für kooperatives Lernen nutzen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Storyboard, Präsentation, Foto, Video oder Audio zielgerichtet planen und gestalten.</p>
+<ol class="steps"><li>Thema in 60 Sekunden erklären.</li><li>Skript mit Fachbegriffen schreiben.</li><li>Storyboard mit Einstellungsgrössen planen.</li><li>Bild, Ton und Text rechtlich korrekt verwenden.</li><li>Video oder kommentierte Präsentation produzieren.</li></ol>
+<p><strong>Lernprodukt:</strong> Storyboard plus kurzer Medienbeitrag.</p>
+</div>
+<div class="example" data-fach="alle Fächer Deutsch BG Fremdsprachen Musik" data-kategorie="Arbeitsblatt/Material" data-mi="MI.1.3" data-quarter="7Q1 7Q2 7Q3 7Q4 8Q2 9Q3 9Q4" id="beispiel-creative-commons-nutzungsrechte">
+<h3>Creative Commons und Nutzungsrechte <span class="meta">MI-Anschluss: 8. Klasse Q2 oder 9. Klasse Q4</span></h3><p class="category-line"><span class="cat cat-material">Kategorie: Arbeitsblatt/Material</span></p><p class="timing-detail"><span class="timing-badge basis">Schulweite Basis</span><strong>MI-Anschluss:</strong> 8. Klasse Q2 oder 9. Klasse Q4. <strong>Funktion:</strong> Jederzeit als gemeinsamer Mindeststandard für Quellen- und Lizenznachweise einsetzbar.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 1 bis 2 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Lizenzarten klären und Quellen/Lizenzen in einem Produkt nachweisen.</p>
+<p><strong>Fächer:</strong> alle Fächer, BG, Musik, Deutsch, Fremdsprachen. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/creative-commons-zebisdigital" href="https://www.zebis.ch/unterrichtsmaterial/creative-commons-zebisdigital" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/creative-commons-zebisdigital">zebis.digital: Creative Commons</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.3 e, MI.1.3 g.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.3 e:</strong> Medieninhalte weiterverwenden und unter Angabe der Quelle in Eigenproduktionen integrieren. <strong>MI.1.3 g:</strong> mit eigenen und fremden Inhalten Medienbeiträge herstellen und rechtliche Rahmenbedingungen sowie Sicherheits- und Verhaltensregeln berücksichtigen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Medieninhalte suchen, Lizenzbedingungen prüfen und Quellen- sowie Lizenznachweise korrekt führen.</p>
+<ol class="steps"><li>Urheberrecht und Lizenzarten unterscheiden.</li><li>Geeignete Bilder, Sounds oder Texte suchen.</li><li>Lizenzbedingungen prüfen.</li><li>Medienprodukt erstellen.</li><li>Quellen und Lizenzen korrekt aufführen.</li></ol>
+<p><strong>Lernprodukt:</strong> Bildcollage, Präsentation, Podcast oder Jingle mit Lizenznachweis.</p>
+</div>
+<div class="example" data-fach="Deutsch ERG BO" data-kategorie="fertige Planung" data-mi="MI.1.1 MI.1.3 MI.2.3" data-quarter="8Q4 9Q4" id="beispiel-datenschutz-digitale-identitaet">
+<h3>Datenschutz und digitale Identität <span class="meta">MI-Anschluss: 8. Klasse Q4 oder 9. Klasse Q4</span></h3><p class="category-line"><span class="cat cat-planung">Kategorie: fertige Planung</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q4 oder 9. Klasse Q4. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> offen: abhängig von gewählter Unterrichtseinheit. <strong>Sicherheit:</strong> offen. <strong>Begründung:</strong> mehrteiliges Lehrmittel, Umfang wird durch Auswahl der Bausteine bestimmt.</p>
+<p><strong>Fächer:</strong> ERG, BO, Deutsch. <strong>Quelle:</strong> <a class="external-source" data-url="https://openilias.phzh.ch/go/lm/249" href="https://openilias.phzh.ch/go/lm/249" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://openilias.phzh.ch/go/lm/249">PHZH: Sicher auf der Datenwelle</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.1 e, MI.2.3 j, MI.2.3 n. <em>Erweiterung:</em> MI.1.3 g.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.1 e:</strong> Chancen und Risiken der Mediennutzung benennen und Konsequenzen für das eigene Verhalten ziehen. <strong>MI.2.3 j:</strong> lokale Geräte, lokales Netzwerk und Internet als Speicherorte für private und öffentliche Daten unterscheiden. <strong>MI.2.3 n:</strong> Risiken unverschlüsselter Datenübermittlung und -speicherung abschätzen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.3 g:</strong> mit eigenen und fremden Inhalten Medienbeiträge herstellen und rechtliche Rahmenbedingungen sowie Sicherheits- und Verhaltensregeln berücksichtigen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>digitale Informationen einordnen, persönliche Daten schützen und sichere Speicherorte wählen.</p>
+<ol class="steps"><li>Alltagssituation mit Smartphone und Datenspuren analysieren.</li><li>Personendaten und besonders schützenswerte Daten unterscheiden.</li><li>Online-Identität und Privatsphäre diskutieren.</li><li>Konkrete Schutzmassnahmen ableiten.</li><li>Optional Kurzfilm zu Datenschutz produzieren.</li></ol>
+<p><strong>Lernprodukt:</strong> Datenschutz-Checkliste oder Kurzfilm.</p>
+</div>
+<div class="example" data-fach="WAH ERG BO" data-kategorie="Arbeitsblatt/Material" data-mi="MI.1.1 MI.1.2 MI.2.3" data-quarter="8Q3 9Q4" id="beispiel-online-werbung-cookies-konsum">
+<h3>Online-Werbung, Cookies und Konsum <span class="meta">MI-Anschluss: 8. Klasse Q3 oder 9. Klasse Q4</span></h3><p class="category-line"><span class="cat cat-material">Kategorie: Arbeitsblatt/Material</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q3 oder 9. Klasse Q4. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 1 bis 2 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Analyse eines Shops oder Werbeprofils mit kurzer Auswertung.</p>
+<p><strong>Fächer:</strong> WAH, BO, ERG. <strong>Quellen:</strong> <a class="external-source" data-url="https://jugendundmedien.ch/topics/datenschutz" href="https://jugendundmedien.ch/topics/datenschutz" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://jugendundmedien.ch/topics/datenschutz">Jugend und Medien: Datenschutz</a>, <a class="external-source" data-url="https://www.internet-abc.de/lehrkraefte/unterrichtsmaterialien/" href="https://www.internet-abc.de/lehrkraefte/unterrichtsmaterialien/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.internet-abc.de/lehrkraefte/unterrichtsmaterialien/">Internet-ABC Unterrichtsmaterialien</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.1 e, MI.1.2 h, MI.1.2 i. <em>Erweiterung:</em> MI.2.3 j.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.1 e:</strong> Chancen und Risiken der Mediennutzung benennen und Konsequenzen für das eigene Verhalten ziehen. <strong>MI.1.2 h:</strong> Absicht hinter Medienbeiträgen einschätzen. <strong>MI.1.2 i:</strong> Organisations- und Finanzierungsformen von Medienangeboten und deren Konsequenzen kennen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.2.3 j:</strong> lokale Geräte, lokales Netzwerk und Internet als Speicherorte für private und öffentliche Daten unterscheiden.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Online-Informationen, Werbung und Datenspuren erkennen, vergleichen und bewerten.</p>
+<ol class="steps"><li>Online-Shop oder Plattform untersuchen.</li><li>Cookies, personalisierte Werbung und Bewertungssysteme identifizieren.</li><li>Preis, Versand, Bewertung und Werbung trennen.</li><li>Datenschutzrisiko beschreiben.</li><li>Konsumentscheidung begründen.</li></ol>
+<p><strong>Lernprodukt:</strong> Analyseblatt zu Online-Shop oder Werbeprofil.</p>
+</div>
+<div class="example" data-fach="Deutsch BG ERG" data-kategorie="fertige Planung" data-mi="MI.1.1 MI.1.4" data-quarter="7Q2 8Q1 9Q2" id="beispiel-social-media-cybermobbing-klassenchat">
+<h3>Social Media, Cybermobbing und Klassenchat <span class="meta">MI-Anschluss: 7. Klasse Q2, 8. Klasse Q1 oder 9. Klasse Q2</span></h3><p class="category-line"><span class="cat cat-planung">Kategorie: fertige Planung</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 7. Klasse Q2, 8. Klasse Q1 oder 9. Klasse Q2. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 2 bis 3 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Fallanalyse, Regelarbeit und Transfer auf digitale Kommunikation.</p>
+<p><strong>Fächer:</strong> ERG, Deutsch, BG. <strong>Quellen:</strong> <a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/social-media-zebisdigital" href="https://www.zebis.ch/unterrichtsmaterial/social-media-zebisdigital" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/social-media-zebisdigital">zebis.digital: Social Media</a>, <a class="external-source" data-url="https://www.saferinternet.at/services/lernunterlagen/aktiv-gegen-cybermobbing-1" href="https://www.saferinternet.at/services/lernunterlagen/aktiv-gegen-cybermobbing-1" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.saferinternet.at/services/lernunterlagen/aktiv-gegen-cybermobbing-1">saferinternet.at: Aktiv gegen Cybermobbing</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.1 c, MI.1.1 d, MI.1.4 c. <em>Erweiterung:</em> MI.1.1 e.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.1 c:</strong> Folgen medialer und virtueller Handlungen erkennen und benennen. <strong>MI.1.1 d:</strong> Regeln und Wertesysteme verschiedener Lebenswelten unterscheiden, reflektieren und entsprechend handeln. <strong>MI.1.4 c:</strong> mittels Medien kommunizieren und dabei Sicherheits- und Verhaltensregeln befolgen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.1 e:</strong> Chancen und Risiken der Mediennutzung benennen und Konsequenzen für das eigene Verhalten ziehen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>digitale Kommunikation regelgeleitet nutzen und kooperative Verhaltensregeln anwenden.</p>
+<ol class="steps"><li>Fallbeispiel aus Klassenchat oder Social Media lesen.</li><li>Regelverstösse und Folgen benennen.</li><li>Handlungsmöglichkeiten für Betroffene, Beobachtende und Lehrpersonen sammeln.</li><li>Netiquette-Regeln formulieren.</li><li>Regeln als Plakat oder digitales Dokument veröffentlichen.</li></ol>
+<p><strong>Lernprodukt:</strong> Klassenchat-Regelwerk mit Begründungen.</p>
+</div>
+<div class="example" data-fach="Mathematik NT" data-kategorie="fertige Planung" data-mi="MI.2.2" data-quarter="8Q4 9Q3" id="beispiel-programmieren-python-blockcode">
+<h3>Programmieren mit Python oder Blockcode <span class="meta">MI-Anschluss: 8. Klasse Q4 oder 9. Klasse Q3</span></h3><p class="category-line"><span class="cat cat-planung">Kategorie: fertige Planung</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q4 oder 9. Klasse Q3. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 3 bis 5 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Einführung, Programmierphase, Testen und kurze Dokumentation.</p>
+<p><strong>Fächer:</strong> Mathematik, NT. <strong>Quellen:</strong> <a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/einfach-informatik-7-9-programmieren" href="https://www.zebis.ch/unterrichtsmaterial/einfach-informatik-7-9-programmieren" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/einfach-informatik-7-9-programmieren">zebis: Einfach Informatik 7 bis 9 Programmieren</a>, <a class="external-source" data-url="https://www.code4school.ch/" href="https://www.code4school.ch/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.code4school.ch/">code4school</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.2.2 f, MI.2.2 g, MI.2.2 h.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.2.2 f:</strong> Programme mit Schleifen, bedingten Anweisungen und Parametern schreiben und testen. <strong>MI.2.2 g:</strong> Lösungswege in Form lauffähiger und korrekter Computerprogramme formulieren. <strong>MI.2.2 h:</strong> Algorithmen als Programme mit Variablen und Unterprogrammen formulieren.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Programme zielgerichtet nutzen, einfache Abläufe darstellen, testen und dokumentieren.</p>
+<ol class="steps"><li>Ablauf als Pseudocode oder Flussdiagramm beschreiben.</li><li>Schleife, Bedingung und Variable markieren.</li><li>Programm erstellen oder anpassen.</li><li>Testfälle durchführen.</li><li>Code kurz dokumentieren.</li></ol>
+<p><strong>Lernprodukt:</strong> Mini-Programm mit Ablaufdiagramm und Testprotokoll.</p>
+</div>
+<div class="example" data-fach="RZG BG WAH" data-kategorie="Projektidee" data-mi="MI.1.2 MI.1.3 MI.1.4" data-quarter="8Q3" id="beispiel-ressourcenverbrauch-visualisierung">
+<h3>Ressourcenverbrauch und digitale Visualisierung <span class="meta">MI-Anschluss: 8. Klasse Q3 oder 9. Klasse Projekt</span></h3><p class="category-line"><span class="cat cat-projekt">Kategorie: Projektidee</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q3 oder 9. Klasse Projekt. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 5 bis 8 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Recherche, Datenaufbereitung und digitale Visualisierung als Projekt.</p>
+<p><strong>Fächer:</strong> WAH, RZG, TTG, BG. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/fachbereich/medien-und-informatik-31157/formaler-typ/app-31121/anwendung/empfehlung-31087/anwendung/informationsrecherche-31097" href="https://www.zebis.ch/unterrichtsmaterial/fachbereich/medien-und-informatik-31157/formaler-typ/app-31121/anwendung/empfehlung-31087/anwendung/informationsrecherche-31097" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/fachbereich/medien-und-informatik-31157/formaler-typ/app-31121/anwendung/empfehlung-31087/anwendung/informationsrecherche-31097">zebis: VR-Räume zum Ressourcenverbrauch in der Textilindustrie</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.2 e, MI.1.3 f, MI.1.3 g. <em>Erweiterung:</em> MI.1.4 d.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.2 e:</strong> Informationen aus verschiedenen Quellen gezielt beschaffen, auswählen und hinsichtlich Qualität und Nutzen beurteilen. <strong>MI.1.3 f:</strong> Medien nutzen, um Gedanken und Wissen vor Publikum zu präsentieren oder zu veröffentlichen, und Wirkung eigener Beiträge berücksichtigen. <strong>MI.1.3 g:</strong> mit eigenen und fremden Inhalten Medienbeiträge herstellen und rechtliche Rahmenbedingungen sowie Sicherheits- und Verhaltensregeln berücksichtigen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.4 d:</strong> Medien gezielt für kooperatives Lernen nutzen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Informationen recherchieren, Daten und Bilder strukturieren und Ergebnisse digital präsentieren.</p>
+<ol class="steps"><li>Textilprodukt oder Rohstoff auswählen.</li><li>Informationen recherchieren und Quellen prüfen.</li><li>Daten, Bilder und Text strukturieren.</li><li>Ergebnisse als Raum, Plakat oder digitale Präsentation visualisieren.</li><li>Produkt mit Quellen und Reflexion präsentieren.</li></ol>
+<p><strong>Lernprodukt:</strong> digitale Ausstellung oder Präsentation.</p>
+</div>
+<div class="example" data-fach="Deutsch Fremdsprachen Musik" data-kategorie="Projektidee" data-mi="MI.1.3 MI.1.4" data-quarter="8Q2 9Q4" id="beispiel-podcast-audiobeitrag">
+<h3>Podcast oder Audiobeitrag <span class="meta">MI-Anschluss: 8. Klasse Q2 oder 9. Klasse Q4</span></h3><p class="category-line"><span class="cat cat-projekt">Kategorie: Projektidee</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q2 oder 9. Klasse Q4. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 3 bis 5 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Skript, Aufnahme, Schnitt, Veröffentlichung oder Präsentation.</p>
+<p><strong>Fächer:</strong> Musik, Deutsch, Fremdsprachen. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.zebis.ch/dossier/podcasts-der-schule" href="https://www.zebis.ch/dossier/podcasts-der-schule" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/dossier/podcasts-der-schule">zebis: Podcasts in der Schule</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.3 f, MI.1.3 g. <em>Erweiterung:</em> MI.1.4 d.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.3 f:</strong> Medien nutzen, um Gedanken und Wissen vor Publikum zu präsentieren oder zu veröffentlichen, und Wirkung eigener Beiträge berücksichtigen. <strong>MI.1.3 g:</strong> mit eigenen und fremden Inhalten Medienbeiträge herstellen und rechtliche Rahmenbedingungen sowie Sicherheits- und Verhaltensregeln berücksichtigen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.4 d:</strong> Medien gezielt für kooperatives Lernen nutzen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Audio aufnehmen, bearbeiten, veröffentlichungsnah gestalten und Quellen/Lizenzen dokumentieren.</p>
+<ol class="steps"><li>Skript oder Interviewleitfaden erstellen.</li><li>Ton aufnehmen und schneiden.</li><li>freie Musik oder eigene Sounds verwenden.</li><li>Quellen und Lizenzen dokumentieren.</li><li>Wirkung von Stimme, Musik und Schnitt reflektieren.</li></ol>
+<p><strong>Lernprodukt:</strong> Podcastfolge oder Audiobeitrag mit Quellenblatt.</p>
+</div>
+<div class="example" data-fach="Deutsch RZG ERG" data-kategorie="Arbeitsblatt/Material" data-mi="MI.1.1 MI.1.2" data-quarter="7Q2 8Q1" id="beispiel-mediengrundfunktionen">
+<h3>Mediengrundfunktionen unterscheiden <span class="meta">MI-Anschluss: 7. Klasse Q2 oder 8. Klasse Q1</span></h3><p class="category-line"><span class="cat cat-material">Kategorie: Arbeitsblatt/Material</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 7. Klasse Q2 oder 8. Klasse Q1. <strong>Funktion:</strong> Passend als Transfer zu Connected 3 oder zur unmittelbaren Festigung im gleichen Schuljahr.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 1 Lektion. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> kurze Erarbeitung und Zuordnung von Medienfunktionen.</p>
+<p><strong>Fächer:</strong> Deutsch, RZG, ERG. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/medien-und-deren-grundfunktionen" href="https://www.zebis.ch/unterrichtsmaterial/medien-und-deren-grundfunktionen" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/medien-und-deren-grundfunktionen">zebis: Medien und deren Grundfunktionen</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.2 d, MI.1.2 h, MI.1.1 g.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.2 d:</strong> Grundfunktionen der Medien benennen und Mischformen erkennen. <strong>MI.1.2 h:</strong> Absicht hinter Medienbeiträgen einschätzen. <strong>MI.1.1 g:</strong> Funktion und Bedeutung der Medien für Kultur, Wirtschaft und Politik beschreiben.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Medienbeiträge nach Funktion ordnen, Wirkung beschreiben und Beispiele begründen.</p>
+<ol class="steps"><li>Medienbeispiele sammeln: Nachricht, Werbung, Tutorial, Kommentar, Unterhaltung.</li><li>Grundfunktionen zuordnen: Information, Bildung, Meinungsbildung, Unterhaltung, Kommunikation.</li><li>Mischformen begründen.</li><li>Ein Beispiel aus dem eigenen Fach analysieren.</li></ol>
+<p><strong>Lernprodukt:</strong> Zuordnungstabelle mit Begründung und einem selbst gewählten Medienbeispiel.</p>
+</div>
+<div class="example" data-fach="Deutsch RZG BO ERG" data-kategorie="fertige Planung" data-mi="MI.1.2 MI.2.3" data-quarter="8Q1 9Q2" id="beispiel-wahr-oder-fake">
+<h3>Wahr oder Fake: Recherche-Quiz <span class="meta">MI-Anschluss: 8. Klasse Q1 oder 9. Klasse Q2</span></h3><p class="category-line"><span class="cat cat-planung">Kategorie: fertige Planung</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q1 oder 9. Klasse Q2. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 2 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Quiz, Rechercheprüfung und Begründung der Einschätzung.</p>
+<p><strong>Fächer:</strong> Deutsch, RZG, BO, ERG. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/wahr-oder-fake" href="https://www.zebis.ch/unterrichtsmaterial/wahr-oder-fake" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/wahr-oder-fake">zebis: Wahr oder Fake</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.2 e, MI.1.2 h, MI.2.3 i.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.2 e:</strong> Informationen aus verschiedenen Quellen gezielt beschaffen, auswählen und hinsichtlich Qualität und Nutzen beurteilen. <strong>MI.1.2 h:</strong> Absicht hinter Medienbeiträgen einschätzen. <strong>MI.2.3 i:</strong> grundsätzliche Funktionsweise von Suchmaschinen verstehen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Suchstrategien anwenden, Webseiten beurteilen und Prüfergebnisse festhalten.</p>
+<ol class="steps"><li>Kurztexte oder Webseiten prüfen.</li><li>Vertrauenssignale und Warnsignale markieren.</li><li>Suchstrategie dokumentieren.</li><li>Quiz als formative Beurteilung durchführen.</li><li>Regeln für zuverlässige Recherche festhalten.</li></ol>
+<p><strong>Lernprodukt:</strong> Rechercheprotokoll und persönlicher Quellencheck.</p>
+</div>
+<div class="example" data-fach="Deutsch RZG BG ERG" data-kategorie="Arbeitsblatt/Material" data-mi="MI.1.2 MI.1.3" data-quarter="7Q1 7Q2 7Q3 7Q4 8Q1 8Q2 8Q3 8Q4 9Q2" id="beispiel-bilder-quellen-manipulation">
+<h3>Bilder lesen, Quellen prüfen, Manipulation erkennen <span class="meta">MI-Anschluss: 8. Klasse Q1 oder 9. Klasse Q2</span></h3><p class="category-line"><span class="cat cat-material">Kategorie: Arbeitsblatt/Material</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q1 oder 9. Klasse Q2. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 1 bis 2 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Bildanalyse, Rückwärtssuche oder Quellenprüfung.</p>
+<p><strong>Fächer:</strong> Deutsch, RZG, BG, ERG. <strong>Quelle:</strong> <a class="external-source" data-url="https://usethenews.ch/sprache/deutsch/" href="https://usethenews.ch/sprache/deutsch/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://usethenews.ch/sprache/deutsch/">UseTheNews Schweiz: Bilder lesen und verstehen</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.2 e, MI.1.2 g, MI.1.2 h. <em>Erweiterung:</em> MI.1.3 e.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.2 e:</strong> Informationen aus verschiedenen Quellen gezielt beschaffen, auswählen und hinsichtlich Qualität und Nutzen beurteilen. <strong>MI.1.2 g:</strong> grundlegende Elemente der Bild-, Film- und Fernsehsprache kennen und ihre Funktion reflektieren. <strong>MI.1.2 h:</strong> Absicht hinter Medienbeiträgen einschätzen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.3 e:</strong> Medieninhalte weiterverwenden und unter Angabe der Quelle in Eigenproduktionen integrieren.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Bildquellen recherchieren, Bildinformationen prüfen und Bildwirkung begründen.</p>
+<ol class="steps"><li>Bild ohne Kontext beschreiben.</li><li>Quelle, Ausschnitt, Perspektive und Bildunterschrift prüfen.</li><li>Manipulationsmöglichkeiten sammeln.</li><li>Bild in einem Fachkontext neu beschriften.</li><li>Wirkung der neuen Beschriftung vergleichen.</li></ol>
+<p><strong>Lernprodukt:</strong> Bildanalyse mit Quellenprüfung und Wirkungskommentar.</p>
+</div>
+<div class="example" data-fach="Deutsch ERG BO RZG" data-kategorie="Arbeitsblatt/Material" data-mi="MI.1.1 MI.1.2 MI.2.3" data-quarter="8Q1 9Q2" id="beispiel-medienkompetenz-arbeitsblaetter">
+<h3>Medienkompetenz-Arbeitsblätter: Suchprofi, Inhalte beurteilen, KI und Deepfakes <span class="meta">MI-Anschluss: 8. Klasse Q1 oder 9. Klasse Q2</span></h3><p class="category-line"><span class="cat cat-material">Kategorie: Arbeitsblatt/Material</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q1 oder 9. Klasse Q2. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 1 bis 2 Lektionen pro Arbeitsblatt. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> einzelne Arbeitsblätter werden in Fachauftrag eingebettet.</p>
+<p><strong>Fächer:</strong> Deutsch, ERG, BO, RZG. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.feel-ok.ch/de_CH/schule/themen/medienkompetenz/medienkompetenz.cfm" href="https://www.feel-ok.ch/de_CH/schule/themen/medienkompetenz/medienkompetenz.cfm" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.feel-ok.ch/de_CH/schule/themen/medienkompetenz/medienkompetenz.cfm">feel-ok.ch: Medienkompetenz für die Schule</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.2 e, MI.1.2 h, MI.2.3 i. <em>Erweiterung:</em> MI.1.1 e.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.2 e:</strong> Informationen aus verschiedenen Quellen gezielt beschaffen, auswählen und hinsichtlich Qualität und Nutzen beurteilen. <strong>MI.1.2 h:</strong> Absicht hinter Medienbeiträgen einschätzen. <strong>MI.2.3 i:</strong> grundsätzliche Funktionsweise von Suchmaschinen verstehen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.1 e:</strong> Chancen und Risiken der Mediennutzung benennen und Konsequenzen für das eigene Verhalten ziehen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Arbeitsblätter zu Recherche, KI, Deepfakes und Medienbewertung bearbeiten und Ergebnisse reflektieren.</p>
+<ol class="steps"><li>Arbeitsblatt auswählen: Suchprofi, Inhalte beurteilen, Fake News, KI oder Deepfakes.</li><li>Einzeln bearbeiten und zu zweit vergleichen.</li><li>Regeln für den Fachunterricht ableiten.</li><li>Regeln bei der nächsten Fachrecherche anwenden.</li></ol>
+<p><strong>Lernprodukt:</strong> ausgefülltes Arbeitsblatt plus Transferregel für den Fachunterricht.</p>
+</div>
+<div class="example" data-fach="RZG ERG Deutsch" data-kategorie="Arbeitsblatt/Material" data-mi="MI.1.1 MI.1.2" data-quarter="8Q1 9Q2" id="beispiel-desinformation-wirkung">
+<h3>Desinformation und gesellschaftliche Wirkung <span class="meta">MI-Anschluss: 8. Klasse Q1 oder 9. Klasse Q2</span></h3><p class="category-line"><span class="cat cat-material">Kategorie: Arbeitsblatt/Material</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q1 oder 9. Klasse Q2. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 1 bis 2 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Beispiel prüfen und Wirkung auf Öffentlichkeit reflektieren.</p>
+<p><strong>Fächer:</strong> RZG, ERG, Deutsch. <strong>Quelle:</strong> <a class="external-source" data-url="https://jugendundmedien.ch/topics/desinformation" href="https://jugendundmedien.ch/topics/desinformation" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://jugendundmedien.ch/topics/desinformation">Jugend und Medien: Desinformation</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.1 g, MI.1.2 e, MI.1.2 h.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.1 g:</strong> Funktion und Bedeutung der Medien für Kultur, Wirtschaft und Politik beschreiben. <strong>MI.1.2 e:</strong> Informationen aus verschiedenen Quellen gezielt beschaffen, auswählen und hinsichtlich Qualität und Nutzen beurteilen. <strong>MI.1.2 h:</strong> Absicht hinter Medienbeiträgen einschätzen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Informationen aus mehreren Quellen prüfen und gesellschaftliche Wirkung von Medienbeiträgen beurteilen.</p>
+<ol class="steps"><li>Begriff Desinformation von Irrtum und Meinung unterscheiden.</li><li>Beispielmeldung analysieren: Absicht, Zielgruppe, emotionale Wirkung.</li><li>Folgen für politische Meinungsbildung oder Zusammenleben diskutieren.</li><li>Gegenmassnahmen formulieren.</li></ol>
+<p><strong>Lernprodukt:</strong> Fallanalyse mit Handlungsempfehlung.</p>
+</div>
+<div class="example" data-fach="Deutsch ERG BO" data-kategorie="Arbeitsblatt/Material" data-mi="MI.1.1 MI.1.4" data-quarter="7Q2 8Q1 9Q4" id="beispiel-cybermobbing-rollen">
+<h3>Cybermobbing: Rollen, Handlungsmöglichkeiten, Meldestellen <span class="meta">MI-Anschluss: 7. Klasse Q2, 8. Klasse Q1 oder 9. Klasse Q4</span></h3><p class="category-line"><span class="cat cat-material">Kategorie: Arbeitsblatt/Material</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 7. Klasse Q2, 8. Klasse Q1 oder 9. Klasse Q4. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 2 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Rollenanalyse und Handlungsmöglichkeiten in Fallarbeit.</p>
+<p><strong>Fächer:</strong> ERG, Deutsch, BO. <strong>Quelle:</strong> <a class="external-source" data-url="https://jugendundmedien.ch/topics/cybermobbing" href="https://jugendundmedien.ch/topics/cybermobbing" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://jugendundmedien.ch/topics/cybermobbing">Jugend und Medien: Cybermobbing</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.1 c, MI.1.1 e, MI.1.4 c.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.1 c:</strong> Folgen medialer und virtueller Handlungen erkennen und benennen. <strong>MI.1.1 e:</strong> Chancen und Risiken der Mediennutzung benennen und Konsequenzen für das eigene Verhalten ziehen. <strong>MI.1.4 c:</strong> mittels Medien kommunizieren und dabei Sicherheits- und Verhaltensregeln befolgen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>digitale Kommunikation analysieren, Handlungsoptionen formulieren und Regeln anwenden.</p>
+<ol class="steps"><li>Fallbeispiel mit Rollen lesen: betroffene Person, Täter, Mitläufer, Zuschauende.</li><li>Digitale Plattform und Verbreitungsweg beschreiben.</li><li>Reaktionsmöglichkeiten ordnen: sichern, melden, unterstützen, stoppen.</li><li>Klassenstandard für Chats und Gruppenarbeiten formulieren.</li></ol>
+<p><strong>Lernprodukt:</strong> Handlungsplan Cybermobbing und Klassenchat-Regeln.</p>
+</div>
+<div class="example" data-fach="ERG Deutsch RZG" data-kategorie="Arbeitsblatt/Material" data-mi="MI.1.1 MI.1.2 MI.2.3" data-quarter="9Q2 9Q4" id="beispiel-social-media-dilemma">
+<h3>Social-Media-Dilemma mit Forms-Fragebogen <span class="meta">MI-Anschluss: 9. Klasse Q2 oder Q4</span></h3><p class="category-line"><span class="cat cat-material">Kategorie: Arbeitsblatt/Material</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 9. Klasse Q2 oder Q4. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 2 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Filmimpuls oder Ausschnitt mit Fragebogen und Diskussion.</p>
+<p><strong>Fächer:</strong> ERG, Deutsch, RZG. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/das-dilemma-mit-den-sozialen-medien-fragebogen-zum-dokumentarfilm" href="https://www.zebis.ch/unterrichtsmaterial/das-dilemma-mit-den-sozialen-medien-fragebogen-zum-dokumentarfilm" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/das-dilemma-mit-den-sozialen-medien-fragebogen-zum-dokumentarfilm">zebis: Das Dilemma mit den sozialen Medien</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.1 e, MI.1.1 f, MI.2.3 j. <em>Erweiterung:</em> MI.1.2 h.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.1 e:</strong> Chancen und Risiken der Mediennutzung benennen und Konsequenzen für das eigene Verhalten ziehen. <strong>MI.1.1 f:</strong> Chancen und Risiken der zunehmenden Durchdringung des Alltags durch Medien und Informatik beschreiben. <strong>MI.2.3 j:</strong> lokale Geräte, lokales Netzwerk und Internet als Speicherorte für private und öffentliche Daten unterscheiden. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.2 h:</strong> Absicht hinter Medienbeiträgen einschätzen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Medienbeiträge auswerten, digitale Geschäftsmodelle und eigene Mediennutzung reflektieren.</p>
+<ol class="steps"><li>Ausschnitt aus Dokumentarfilm oder Begleitmaterial bearbeiten.</li><li>Fragen digital beantworten.</li><li>Mechanismen von Empfehlung, Werbung und Aufmerksamkeit beschreiben.</li><li>Konsequenzen für eigenes Verhalten ableiten.</li></ol>
+<p><strong>Lernprodukt:</strong> digitaler Fragebogen und Reflexion zu Plattformmechanismen.</p>
+</div>
+<div class="example" data-fach="ERG Deutsch" data-kategorie="Arbeitsblatt/Material" data-mi="MI.1.1 MI.1.4" data-quarter="7Q2 8Q1" id="beispiel-medienpholy">
+<h3>MedienPHoly: Medienspiel zu Social Media und digitaler Kommunikation <span class="meta">MI-Anschluss: 7. Klasse Q2 oder 8. Klasse Q1</span></h3><p class="category-line"><span class="cat cat-material">Kategorie: Arbeitsblatt/Material</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 7. Klasse Q2 oder 8. Klasse Q1. <strong>Funktion:</strong> Passend als Transfer zu Connected 3 oder zur unmittelbaren Festigung im gleichen Schuljahr.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 1 bis 2 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Spielphase und Auswertung zu Regeln und Risiken.</p>
+<p><strong>Fächer:</strong> ERG, Deutsch. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/medienpholy-medienspiel" href="https://www.zebis.ch/unterrichtsmaterial/medienpholy-medienspiel" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/medienpholy-medienspiel">zebis: MedienPHoly</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.1 c, MI.1.1 d, MI.1.4 c.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.1 c:</strong> Folgen medialer und virtueller Handlungen erkennen und benennen. <strong>MI.1.1 d:</strong> Regeln und Wertesysteme verschiedener Lebenswelten unterscheiden, reflektieren und entsprechend handeln. <strong>MI.1.4 c:</strong> mittels Medien kommunizieren und dabei Sicherheits- und Verhaltensregeln befolgen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>digitale Kommunikationssituationen spielerisch beurteilen und Regeln anwenden.</p>
+<ol class="steps"><li>Spielrunde durchführen.</li><li>Entscheidungen und Konflikte notieren.</li><li>Regeln, Risiken und Chancen von Mediennutzung sammeln.</li><li>Transfer in Klassenchat oder Gruppenarbeit formulieren.</li></ol>
+<p><strong>Lernprodukt:</strong> Reflexionsblatt zu Mediennutzung und digitaler Kommunikation.</p>
+</div>
+<div class="example" data-fach="NT Mathematik" data-kategorie="fertige Planung" data-mi="MI.2.2" data-quarter="8Q4 9Q1 9Q2 9Q3 9Q4" id="beispiel-sortiernetzwerke">
+<h3>Sortiernetzwerke als Algorithmus ohne Computer <span class="meta">MI-Anschluss: 8. Klasse Q4 oder 9. Klasse Q1</span></h3><p class="category-line"><span class="cat cat-planung">Kategorie: fertige Planung</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q4 oder 9. Klasse Q1. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 3 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Sortiernetzwerk durchführen, auf Messwerte oder Zahlen übertragen und mit einem zweiten Sortierverfahren vergleichen.</p>
+<p><strong>Fächer:</strong> Mathematik, NT. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.csunplugged.org/de/topics/sorting-networks/whats-it-all-about/" href="https://www.csunplugged.org/de/topics/sorting-networks/whats-it-all-about/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.csunplugged.org/de/topics/sorting-networks/whats-it-all-about/">CS Unplugged: Sortiernetzwerke</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.2.2 c, MI.2.2 i. <em>Erweiterung:</em> MI.2.2 d.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.2.2 c:</strong> Abläufe mit Schleifen und Verzweigungen erkennen, beschreiben und strukturiert darstellen. <strong>MI.2.2 i:</strong> verschiedene Algorithmen zur Lösung desselben Problems vergleichen und beurteilen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.2.2 d:</strong> Abläufe mit Schleifen, bedingten Anweisungen und Parametern lesen und manuell ausführen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Algorithmen handlungsorientiert darstellen, vergleichen und auf fachliche Daten anwenden.</p>
+<ol class="steps"><li>Zahlenkarten oder Messwerte aus Mathematik oder NT sortieren.</li><li>Vergleichsschritte als Netzwerk darstellen.</li><li>Parallelisierung sichtbar machen.</li><li>Dasselbe Problem mit einem einfachen linearen Sortierverfahren lösen.</li><li>Effizienz und Fehleranfälligkeit beider Verfahren begründen.</li></ol>
+<p><strong>Lernprodukt:</strong> gezeichnetes Sortiernetzwerk mit fachlicher Datenmenge und Vergleich der Strategien.</p>
+</div>
+<div class="example" data-fach="alle Fächer NT Mathematik" data-kategorie="fertige Planung" data-mi="MI.2.2 MI.2.3" data-quarter="8Q1 8Q2 8Q3 8Q4 9Q1 9Q2 9Q3 9Q4" id="beispiel-wie-denken-computer">
+<h3>Wie denken Computer? <span class="meta">MI-Anschluss: 8. Klasse Q4</span></h3><p class="category-line"><span class="cat cat-planung">Kategorie: fertige Planung</span></p><p class="timing-detail"><span class="timing-badge basis">Schulweite Basis</span><strong>MI-Anschluss:</strong> 8. Klasse Q4. <strong>Funktion:</strong> Jederzeit als gemeinsamer Mindeststandard einsetzbar.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 1 bis 2 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> fachlichen Ablauf präzise darstellen und ohne Programmierauftrag verbessern.</p>
+<p><strong>Fächer:</strong> Mathematik, NT, alle Fächer mit Ablaufaufträgen. <strong>Quelle:</strong> <a class="external-source" data-url="https://ilearnit.ch/de/2b/teacher.html" href="https://ilearnit.ch/de/2b/teacher.html" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://ilearnit.ch/de/2b/teacher.html">iLearnIT: Wie denken Computer? Für Lehrpersonen</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.2.2 c, MI.2.2 e. <em>Erweiterung:</em> MI.2.3 l.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.2.2 c:</strong> Abläufe mit Schleifen und Verzweigungen aus der Umwelt erkennen, beschreiben und strukturiert darstellen. <strong>MI.2.2 e:</strong> verstehen, dass ein Computer nur vordefinierte Anweisungen ausführen kann. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.2.3 l:</strong> Eingabe-, Verarbeitungs- und Ausgabeelemente von Informatiksystemen kennen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>fachliche Abläufe formal beschreiben und in Flussdiagrammen darstellen.</p>
+<ol class="steps"><li>Fachlichen Ablauf exakt formulieren, zum Beispiel Experiment, Messvorgang, Rezept, Arbeitsprozess.</li><li>Befehl, Bedingung und Wiederholung markieren.</li><li>Ablauf als Flussdiagramm darstellen.</li><li>Unklare oder widersprüchliche Anweisung suchen und verbessern.</li></ol>
+<p><strong>Lernprodukt:</strong> Flussdiagramm zu einem fachlichen Ablauf mit kurzer Fehlerkorrektur.</p>
+</div>
+<div class="example" data-fach="Deutsch RZG Fremdsprachen" data-kategorie="Projektidee" data-mi="MI.1.3 MI.1.4 MI.2.1" data-quarter="8Q1 8Q2 8Q3 8Q4 9Q1 9Q2 9Q3 9Q4" id="beispiel-qr-lesespur">
+<h3>QR-Lesespur im Schulhaus oder Quartier <span class="meta">MI-Anschluss: 8. Klasse Q2 oder 9. Klasse Projekt</span></h3><p class="category-line"><span class="cat cat-projekt">Kategorie: Projektidee</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q2 oder 9. Klasse Projekt. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 4 bis 8 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Stationen, Texte, QR-Codes, Testlauf und Überarbeitung.</p>
+<p><strong>Fächer:</strong> Deutsch, Fremdsprachen, RZG. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.mia4u.ch/katalog" href="https://www.mia4u.ch/katalog" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.mia4u.ch/katalog">mia4u: QR-Lesespur</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.3 f, MI.1.4 e, MI.2.1 h. <em>Erweiterung:</em> MI.1.3 g.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.3 f:</strong> Medien nutzen, um Gedanken und Wissen vor Publikum zu präsentieren oder zu veröffentlichen, und Wirkung eigener Beiträge berücksichtigen. <strong>MI.1.4 e:</strong> Medien zur Veröffentlichung eigener Ideen und Meinungen nutzen und das Zielpublikum zu Rückmeldungen motivieren. <strong>MI.2.1 h:</strong> Dokumente so ablegen, dass auch andere sie wieder finden. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.3 g:</strong> mit eigenen und fremden Inhalten Medienbeiträge herstellen und rechtliche Rahmenbedingungen sowie Sicherheits- und Verhaltensregeln berücksichtigen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>digitale Inhalte strukturieren, QR-Codes nutzen und Informationen für ein Zielpublikum bereitstellen.</p>
+<ol class="steps"><li>Geschichte oder Rundgang in Stationen gliedern.</li><li>Texte schreiben und in QR-Codes verpacken.</li><li>Dateien korrekt benennen und online ablegen.</li><li>Lesespur testen und überarbeiten.</li><li>Publikation mit Sicherheitsregeln prüfen.</li></ol>
+<p><strong>Lernprodukt:</strong> QR-Lesespur mit Plan, Quellen und Testprotokoll.</p>
+</div>
+<div class="example" data-fach="Mathematik" data-kategorie="fertige Planung" data-mi="MI.2.1 MI.2.3" data-quarter="7Q1 7Q2 7Q3 7Q4 8Q1 8Q2 8Q3 8Q4" id="beispiel-tabellenkalkulation-rechnungen">
+<h3>Rechnungen mit Tabellenkalkulation kontrollieren <span class="meta">MI-Anschluss: 7. Klasse Q1, 8. Klasse Q3</span></h3><p class="category-line"><span class="cat cat-planung">Kategorie: fertige Planung</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 7. Klasse Q1, 8. Klasse Q3. <strong>Funktion:</strong> Passend als Transfer zu Connected 3 oder zur unmittelbaren Festigung im gleichen Schuljahr.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 2 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Tabellenblatt mit Formeln erstellen und Fehler prüfen.</p>
+<p><strong>Fächer:</strong> Mathematik. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.mia4u.ch/katalog" href="https://www.mia4u.ch/katalog" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.mia4u.ch/katalog">mia4u: Rechnungen kontrollieren mit Tabellenkalkulationsprogrammen</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.2.1 b, MI.2.1 j, MI.2.3 g.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.2.1 b:</strong> unterschiedliche Darstellungsformen für Daten verwenden. <strong>MI.2.1 j:</strong> Daten in einer Datenbank strukturieren, erfassen, suchen und automatisiert auswerten. <strong>MI.2.3 g:</strong> bei Problemen mit Geräten und Programmen Lösungsstrategien anwenden.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Tabellenkalkulation zur Berechnung, Kontrolle und Darstellung mathematischer Daten nutzen.</p>
+<ol class="steps"><li>Rechenaufgaben selbst erfinden.</li><li>Resultate schriftlich lösen.</li><li>Tabellenblatt mit Formeln zur Kontrolle erstellen.</li><li>Fehler suchen und korrigieren.</li><li>Datei sauber benennen und ablegen.</li></ol>
+<p><strong>Lernprodukt:</strong> Tabellenblatt mit Formeln und Fehlerkorrektur.</p>
+</div>
+<div class="example" data-fach="ERG Fremdsprachen" data-kategorie="Projektidee" data-mi="MI.1.1 MI.1.3 MI.1.4" data-quarter="7Q1 7Q2 7Q3 7Q4 8Q1 8Q2 8Q3 8Q4 9Q1 9Q2 9Q3 9Q4" id="beispiel-internet-safety-fremdsprachen">
+<h3>Internet Safety in English oder Französisch <span class="meta">MI-Anschluss: 8. Klasse Q2 oder 9. Klasse Q4</span></h3><p class="category-line"><span class="cat cat-projekt">Kategorie: Projektidee</span></p><p class="timing-detail"><span class="timing-badge transfer">Festigung nach MI</span><strong>MI-Anschluss:</strong> 8. Klasse Q2 oder 9. Klasse Q4. <strong>Funktion:</strong> Passend als Transfer nach Connected 4 oder im Anschluss an ein verwandtes MI-Thema.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 3 bis 5 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Wortschatz, Regeln und fremdsprachiges Medienprodukt.</p>
+<p><strong>Fächer:</strong> Fremdsprachen, ERG. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.mia4u.ch/katalog" href="https://www.mia4u.ch/katalog" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.mia4u.ch/katalog">mia4u: Internet Safety</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.1 d, MI.1.1 e, MI.1.3 f. <em>Erweiterung:</em> MI.1.4 c.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.1 d:</strong> Regeln und Wertesysteme verschiedener Lebenswelten unterscheiden, reflektieren und entsprechend handeln. <strong>MI.1.1 e:</strong> Chancen und Risiken der Mediennutzung benennen und Konsequenzen für das eigene Verhalten ziehen. <strong>MI.1.3 f:</strong> Medien nutzen, um Gedanken und Wissen vor Publikum zu präsentieren oder zu veröffentlichen, und Wirkung eigener Beiträge berücksichtigen. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.4 c:</strong> mittels Medien kommunizieren und dabei Sicherheits- und Verhaltensregeln befolgen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>digitale Sicherheitsregeln in der Zielsprache formulieren und medial präsentieren.</p>
+<ol class="steps"><li>fremdsprachigen Text zu Internetregeln lesen.</li><li>Wortschatz zu Sicherheit, Privatsphäre und Regeln sammeln.</li><li>eigene Safety-Regeln formulieren.</li><li>Plakat, Präsentation oder Kurzvideo erstellen.</li></ol>
+<p><strong>Lernprodukt:</strong> fremdsprachiges Internet-Safety-Poster oder Video.</p>
+</div>
+<div class="example" data-fach="Deutsch RZG" data-kategorie="Projektidee" data-mi="MI.1.2 MI.1.3 MI.2.1" data-quarter="7Q1 7Q2 7Q3 7Q4 8Q1 8Q2 9Q1 9Q2 9Q3 9Q4" id="beispiel-gegenstand-geschichte">
+<h3>Ein Gegenstand macht Geschichte <span class="meta">MI-Anschluss: 8. Klasse Q1 oder Q2</span></h3><p class="category-line"><span class="cat cat-projekt">Kategorie: Projektidee</span></p><p class="timing-detail"><span class="timing-badge aufbau">Aufbau im Fach</span><strong>MI-Anschluss:</strong> 8. Klasse Q1 oder Q2. <strong>Funktion:</strong> Brücke zwischen Connected 3 und Connected 4; fehlende oder schwach gesicherte Kompetenzen werden im Fachunterricht aufgebaut.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 3 bis 5 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Recherche, Chronologie und digitale Zeitleiste oder Wandzeitung.</p>
+<p><strong>Fächer:</strong> RZG, Deutsch. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.mia4u.ch/katalog" href="https://www.mia4u.ch/katalog" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.mia4u.ch/katalog">mia4u: Ein Gegenstand macht Geschichte</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.2 e, MI.1.3 f, MI.2.1 b. <em>Erweiterung:</em> MI.1.3 e.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.2 e:</strong> Informationen aus verschiedenen Quellen gezielt beschaffen, auswählen und hinsichtlich Qualität und Nutzen beurteilen. <strong>MI.1.3 f:</strong> Medien nutzen, um Gedanken und Wissen vor Publikum zu präsentieren oder zu veröffentlichen, und Wirkung eigener Beiträge berücksichtigen. <strong>MI.2.1 b:</strong> unterschiedliche Darstellungsformen für Daten verwenden. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.3 e:</strong> Medieninhalte weiterverwenden und unter Angabe der Quelle in Eigenproduktionen integrieren.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>recherchieren, Informationen chronologisch strukturieren und digital visualisieren.</p>
+<ol class="steps"><li>Alltagsgegenstand auswählen.</li><li>Geschichte und Entwicklung recherchieren.</li><li>Suchresultate auf Verständlichkeit, Aktualität und Werbung prüfen.</li><li>Ereignisse chronologisch ordnen.</li><li>Wandzeitung oder digitale Zeitleiste erstellen.</li></ol>
+<p><strong>Lernprodukt:</strong> digitale Zeitleiste oder Wandzeitung mit Quellenbewertung.</p>
+</div>
+<div class="example" data-fach="alle Fächer Deutsch RZG NT" data-kategorie="Projektidee" data-mi="MI.1.2 MI.1.4 MI.2.1" data-quarter="7Q1 7Q2 7Q3 7Q4 8Q1 8Q2" id="beispiel-concept-maps-copy-paste">
+<h3>Concept-Maps gegen Copy-Paste <span class="meta">MI-Anschluss: 8. Klasse Q1 oder Q2</span></h3><p class="category-line"><span class="cat cat-projekt">Kategorie: Projektidee</span></p><p class="timing-detail"><span class="timing-badge basis">Schulweite Basis</span><strong>MI-Anschluss:</strong> 8. Klasse Q1 oder Q2. <strong>Funktion:</strong> Jederzeit als gemeinsamer Mindeststandard einsetzbar.</p><p class="time-detail"><strong>Zeitbedarf:</strong> 2 bis 3 Lektionen. <strong>Sicherheit:</strong> geschätzt. <strong>Begründung:</strong> Informationen strukturieren, Begriffe verknüpfen und Quellen hinterlegen.</p>
+<p><strong>Fächer:</strong> alle Fächer, Deutsch, NT, RZG. <strong>Quelle:</strong> <a class="external-source" data-url="https://www.mia4u.ch/katalog" href="https://www.mia4u.ch/katalog" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.mia4u.ch/katalog">mia4u: Concept-Maps – Wissensnetze konstruieren</a></p>
+<p><strong>Kompetenzfokus:</strong> MI.1.2 e, MI.2.1 f. <em>Erweiterung:</em> MI.1.4 d.</p><p class="competence-detail"><strong>Direkter Kompetenzbezug:</strong> <strong>MI.1.2 e:</strong> Informationen aus verschiedenen Quellen gezielt beschaffen, auswählen und hinsichtlich Qualität und Nutzen beurteilen. <strong>MI.2.1 f:</strong> Baum- und Netzstrukturen erkennen und verwenden. <em>Nur bei entsprechender Erweiterung:</em> <strong>MI.1.4 d:</strong> Medien gezielt für kooperatives Lernen nutzen.</p><p class="application-detail"><strong>Fächerübergreifende Anwendungskompetenz: </strong>Informationen auswählen, Begriffe strukturieren, Beziehungen darstellen und Quellen hinterlegen.</p>
+<ol class="steps"><li>Informationen aus Web, Buch oder Video sammeln.</li><li>Begriffe auswählen und Beziehungen formulieren.</li><li>Concept-Map digital oder analog erstellen.</li><li>Map mit Partnergruppe prüfen.</li><li>Quelle zu jedem zentralen Begriff hinterlegen.</li></ol>
+<p><strong>Lernprodukt:</strong> Concept-Map mit Quellen und Beziehungsbegriffen.</p>
+</div>
+</section>
+<section id="sprachstarken">
+<h2>5. Fachlehrmittel: ausführliche Kompetenzanschlüsse</h2>
+<p>Die folgende Übersicht dokumentiert ausführlich, wo ausgewählte Fachlehrmittel Anwendungskompetenzen aufgreifen, die den MI-Unterricht fachlich stützen. Fachinhalte bleiben zentral; MI- und Anwendungskompetenzen werden über Recherche, Dokumentation, Daten, Modelle, Präsentation, Textüberarbeitung, Diagramme, Medienvergleich und digitale Produkte sichtbar. Die Angaben sind dort als <strong>gesichert</strong> markiert, wo eine konkrete Jahresplanung oder eine offizielle Lehrmittelübersicht vorliegt; sonst sind sie als <strong>abgeleitet</strong> gekennzeichnet. Dieser Abschnitt wird ebenfalls durch den Fach- und Quartalsfilter links in der Navigation gefiltert.</p>
+<div class="note"><strong>Status:</strong> Die Zuordnung ist aus den hochgeladenen Jahresplanungen abgeleitet. Die Kapitel und Richtzeiten stammen aus den Jahresplanungen. Die MI-Anschlüsse sind didaktische Zuordnungen für den Praxisleitfaden.</div>
+<div class="fachmittel-block" data-fach="Deutsch" id="fachmittel-deutsch">
+<table>
+<thead><tr><th>Schuljahr</th><th>Zeitraum</th><th>Kapitel / Thema</th><th>enthaltene Lern- und Anwendungskompetenzen</th><th>Passender MI-Anschluss</th><th>geeigneter Nachweis</th></tr></thead>
+<tbody>
+<tr class="fachmittel-row" data-quarter="7Q1"><td>7. Klasse</td><td>Q1</td><td>Cornelia Funke; Rechtschreibung gestern und heute</td><td>Informationen aus Biografie und Sachtexten entnehmen, eigene Geschichte schreiben, über das eigene Schreiben nachdenken, Texte zum Vorlesen wirkungsvoll bearbeiten.</td><td><span class="timing-badge aufbau">Aufbau im Fach</span> Textproduktion, Informationsentnahme, Überarbeitung</td><td>eigener Text mit kurzer Schreibreflexion</td></tr>
+<tr class="fachmittel-row" data-quarter="7Q2"><td>7. Klasse</td><td>Q2</td><td>Schreibprojekt «Porträts schreiben»; Pro und kontra</td><td>Porträt und Selbstporträt schreiben, Informationen aus unterschiedlichen Quellen sammeln, Pro- und Kontra-Argumente ordnen, Diskussion vorbereiten und durchführen.</td><td><span class="timing-badge transfer">Festigung nach MI</span> Quellen nutzen, Argumente strukturieren, kommunikative Regeln anwenden</td><td>Porträt oder Argumentationsdossier</td></tr>
+<tr class="fachmittel-row" data-quarter="7Q3"><td>7. Klasse</td><td>Q3</td><td>Vorsicht, Lesegefahr!; Medien nutzen</td><td>Präsentationsvorbereitung kennen, Tabellen und Diagramme lesen und erstellen, audiovisueller Animation und Interview Informationen entnehmen, Pressemitteilung mit Zeitungsbericht vergleichen.</td><td><span class="timing-badge transfer">Festigung nach MI</span> Medienbeiträge vergleichen, Daten darstellen, Präsentieren</td><td>Diagramm mit Kommentar oder Medienvergleich</td></tr>
+<tr class="fachmittel-row" data-quarter="7Q4"><td>7. Klasse</td><td>Q4</td><td>Was ist ein guter Bericht?; Lesen und imaginieren; Schreibwelt</td><td>Sachtextinformationen nutzen, Textsorte Bericht kennen, eigene Berichte schreiben, im Dialog über literarische Texte sprechen, Geschichte mit Fakten entwickeln.</td><td><span class="timing-badge aufbau">Aufbau im Fach</span> Recherche, Textstruktur, Schreibprozess</td><td>Bericht mit Quellen- oder Faktennachweis</td></tr>
+<tr class="fachmittel-row" data-quarter="8Q1"><td>8. Klasse</td><td>Q1</td><td>Mirjam Pressler; Dialekte; Sprachverwandtschaft</td><td>Audio-Interview Informationen entnehmen, verdichtete Aussagen schreiben, Wirkung eigener Worte reflektieren, Grafiken und Sachtexten gezielt Informationen entnehmen.</td><td><span class="timing-badge aufbau">Aufbau im Fach</span> Hören, Lesen, Schreiben, Darstellungen auswerten</td><td>Notizen und Kurztext zu Interview oder Grafik</td></tr>
+<tr class="fachmittel-row" data-quarter="8Q2"><td>8. Klasse</td><td>Q2</td><td>Schreibtraining «Motivation für einen Beruf»; Bibliotheken; Notizen machen</td><td>Bewerbungsschreiben verfassen, Interview vorbereiten und durchführen, Bericht oder Porträt schreiben, Wortbedeutungen klären, beim Zuhören Notizen machen und Qualität der Notizen einschätzen.</td><td><span class="timing-badge basis">Schulweite Basis</span> BO-Anschluss, Recherche, Notizen, Dokumentation</td><td>Bewerbungsschreiben, Interviewnotizen oder Berufsporträt</td></tr>
+<tr class="fachmittel-row" data-quarter="8Q3"><td>8. Klasse</td><td>Q3</td><td>Suchen und finden im Internet; Präsentieren und sich vorstellen</td><td>Informationen über Suchmaschinen und Wikipedia entnehmen, Suchstrategien ausbauen, Qualität von Websites und Internettexten einschätzen, freie Rede und Bewerbungsgespräch üben.</td><td><span class="timing-badge transfer">Festigung nach MI</span> Suchmaschinen, Quellenqualität, Präsentieren</td><td>Rechercheprotokoll mit Quellenbewertung</td></tr>
+<tr class="fachmittel-row" data-quarter="8Q4"><td>8. Klasse</td><td>Q4</td><td>Projekte dokumentieren; Schriften und Zeichen; Debattieren</td><td>Projektablauf im Projektjournal dokumentieren, Interview führen, Infoplakate beurteilen und gestalten, Symbole und Piktogramme deuten, Standpunkt in Debatte vertreten.</td><td><span class="timing-badge aufbau">Aufbau im Fach</span> Projektjournal, Visualisierung, Präsentation, Zeichen verstehen</td><td>Projektjournal oder Infoplakat mit Kriterienraster</td></tr>
+<tr class="fachmittel-row" data-quarter="9Q1"><td>9. Klasse</td><td>Q1</td><td>William Shakespeare</td><td>Anspruchsvollen Texten Informationen entnehmen, Text strukturieren, Motiv im Film erkennen, schwierige Wörter bearbeiten, echt wirkende Dialoge schreiben.</td><td><span class="timing-badge aufbau">Aufbau im Fach</span> Text- und Filmverstehen, Strukturieren, Medienvergleich</td><td>strukturierte Text- und Filmsichtung</td></tr>
+<tr class="fachmittel-row" data-quarter="9Q2"><td>9. Klasse</td><td>Q2</td><td>Texte inhaltlich überarbeiten; Gespräche und Präsentationen vorbereiten; Debatte</td><td>Schreibziele formulieren, Schreibkonferenz mit LUPA durchführen, Klassenrat moderieren, Präsentationsfolien attraktiv gestalten und angemessen einsetzen, Argumente aufnehmen und weiterführen.</td><td><span class="timing-badge transfer">Festigung nach MI</span> Überarbeiten, Präsentationsmedien, Kooperation, Kommunikation</td><td>überarbeiteter Text plus Präsentationsfolien</td></tr>
+<tr class="fachmittel-row" data-quarter="9Q3"><td>9. Klasse</td><td>Q3</td><td>Seiten gestalten; Textverarbeitungsprogramm korrigieren; Überzeugen und begründen</td><td>Längeren Text lesefreundlich gestalten, Bild und Text auf einer Seite anordnen, Korrekturprogramm nutzen und seine Grenzen reflektieren, überzeugende Texte und Beurteilungen schreiben.</td><td><span class="timing-badge basis">Schulweite Basis</span> Layout, Textverarbeitung, Korrekturhilfen, Quellenbewusstsein</td><td>gestaltete Textseite mit Korrekturprotokoll</td></tr>
+<tr class="fachmittel-row" data-quarter="9Q4"><td>9. Klasse</td><td>Q4</td><td>Lesen und imaginieren; Schreibwerkstatt; Poetry Slam</td><td>Literarische Gespräche führen, selbstständig Texte zu Schreibimpulsen schreiben, Interviewinformationen für einen wirkungsvollen Slam-Text nutzen, eigenen Slam-Text performen.</td><td><span class="timing-badge aufbau">Aufbau im Fach</span> Medienproduktion, Präsentation, Wirkung vor Publikum</td><td>Slam-Text mit Performance-Reflexion</td></tr>
+</tbody>
+</table>
+<div class="sourcebox"><h3>Verdichtung für Deutsch</h3><ul><li><strong>7. Klasse:</strong> Grundlagen für Medienvergleich, Diagramme, Quellen, Präsentation und argumentierendes Schreiben.</li><li><strong>8. Klasse:</strong> stärkster Deutsch-Anschluss für Recherche, Suchmaschinen, Websitequalität, Bewerbung, Notizen und Projektdokumentation.</li><li><strong>9. Klasse:</strong> stärkster Anschluss für Textüberarbeitung, Präsentationsfolien, Layout, Korrekturprogramme, Debatte und performative Medienprodukte.</li></ul></div>
+</div>
+<div class="fachmittel-block" data-fach="Mathematik" id="fachmittel-mathematik">
+<h3>Mathematik 1–3 Sekundarstufe I</h3>
+<p>Die Mathematiklehrmittel liefern vor allem Anwendungskompetenzen zu Daten, Tabellen, Diagrammen, Darstellungen, Simulationen, Problemlösen und rechnerischer Modellierung. Die Zuordnung beruht auf den öffentlich zugänglichen LMVZ-Themenübersichten.</p>
+<table>
+<thead><tr><th>Schuljahr</th><th>Lehrmittel / Themen</th><th>enthaltene Lern- und Anwendungskompetenzen</th><th>Passender MI-Anschluss</th><th>Status</th><th>geeigneter Nachweis</th></tr></thead>
+<tbody>
+<tr class="fachmittel-row" data-quarter="7Q1 7Q2 7Q3 7Q4"><td>7. Klasse</td><td>Mathematik 1: Daten darstellen; Grössen und Prozente; Koordinaten; Regelmässigkeiten des Zufalls</td><td>Daten lesen, ordnen und darstellen; Grössen und Prozentanteile berechnen; Koordinaten nutzen; Zufallsergebnisse systematisch erfassen.</td><td><span class="timing-badge aufbau">Aufbau im Fach</span> Tabellen, Diagramme, Daten darstellen</td><td>gesichert</td><td>Tabellenblatt mit Diagramm und kurzer Interpretation</td></tr>
+<tr class="fachmittel-row" data-quarter="8Q1 8Q2 8Q3 8Q4"><td>8. Klasse</td><td>Mathematik 2: Zuordnungen und Abhängigkeiten; Proportionalität; Währungen und Budget; Baumdarstellungen; statistische Kennwerte; Simulationen / Statistik praktisch</td><td>Tabellenkalkulation für Zuordnungen, Budget und Statistik nutzen; Daten mit Kennwerten auswerten; Simulationen durchführen und Ergebnisse vergleichen.</td><td><span class="timing-badge transfer">Festigung nach MI</span> Daten auswerten, Simulationen, Tabellenkalkulation</td><td>gesichert</td><td>Budget- oder Statistikdossier mit Formeln, Diagramm und Kommentar</td></tr>
+<tr class="fachmittel-row" data-quarter="9Q1 9Q2 9Q3 9Q4"><td>9. Klasse</td><td>Mathematik 3: lineare und nichtlineare Funktionen; Jahreszins; Konsumkredit und Leasing; Problemlösen; Mobilität; Kombinatorik; Umfrage</td><td>Funktionen und Daten grafisch darstellen; Finanz- und Mobilitätsdaten modellieren; Umfragen planen, auswerten und Ergebnisse begründen.</td><td><span class="timing-badge transfer">Festigung nach MI</span> Datenmodellierung, Diagramme, Umfrage, Entscheidungsgrundlagen</td><td>gesichert</td><td>Umfrageauswertung oder Finanzvergleich mit Tabellenkalkulation</td></tr>
+</tbody>
+</table>
+<div class="sourcebox"><h3>Verdichtung für Mathematik</h3><ul><li><strong>7. Klasse:</strong> Daten darstellen und Diagramme als Basis für MI.2.1.</li><li><strong>8. Klasse:</strong> Tabellenkalkulation, Budget, Kennwerte und Simulationen als starkes Transferfeld.</li><li><strong>9. Klasse:</strong> Funktionen, Umfragen, Finanzmodelle und Mobilitätsdaten als produktive Festigung von Datenkompetenz.</li></ul></div>
+</div>
+<div class="fachmittel-block" data-fach="NT" id="fachmittel-nt">
+<h3>Prisma 1–3, Natur und Technik</h3>
+<p>Prisma liefert starke Anschlussstellen für Experimentierzyklus, Protokoll, Recherche, Messdaten, Modelle, Diagramme, Sensoren, Steuerung, Technikzyklus und Bewertung von Daten. Die Zuordnung beruht auf den hochgeladenen Jahresplanungen Prisma 1 bis 3.</p>
+<table>
+<thead><tr><th>Schuljahr</th><th>Lehrmittel / Themen</th><th>enthaltene Lern- und Anwendungskompetenzen</th><th>Passender MI-Anschluss</th><th>Status</th><th>geeigneter Nachweis</th></tr></thead>
+<tbody>
+<tr class="fachmittel-row" data-quarter="7Q1 7Q2 7Q3 7Q4"><td>7. Klasse</td><td>Prisma 1: Arbeiten und Forschen; Experimentierzyklus; Experimentierprotokoll; Recherchieren; Wasser untersuchen; Fliessgewässer beurteilen</td><td>Beobachten, Experiment planen, recherchieren, Protokoll führen, Daten erfassen, einfache Diagramme lesen und erstellen, Modelle nutzen.</td><td><span class="timing-badge aufbau">Aufbau im Fach</span> Recherche, Messdaten, Protokoll, Diagramm</td><td>gesichert</td><td>digitales Experimentierprotokoll mit Messwerttabelle</td></tr>
+<tr class="fachmittel-row" data-quarter="8Q1 8Q2 8Q3 8Q4"><td>8. Klasse</td><td>Prisma 2: Variablenkontrolle; chemische Reaktionen; Gesundheit und Krankheit; Kräfte und Bewegung; Ernährung; Technikzyklus; Optik</td><td>Variablen kontrollieren, Versuche dokumentieren, Messdaten auswerten, Modelle und Reaktionsschemata nutzen, Technikzyklus nachvollziehen, Fachinformationen prüfen.</td><td><span class="timing-badge transfer">Festigung nach MI</span> Daten, Modelle, technische Systeme, Recherche</td><td>gesichert</td><td>Versuchsprotokoll mit Variablenkontrolle und Diagramm</td></tr>
+<tr class="fachmittel-row" data-quarter="9Q1 9Q2 9Q3 9Q4"><td>9. Klasse</td><td>Prisma 3: Lebensräume untersuchen; Boden untersuchen; CO₂-Bilanz; Rohstoffe; Kunststoffe; Evolution; Messen, Steuern, Regeln; Sensoren; Gentechnik</td><td>Daten im Gelände oder Labor erfassen, Stoffkreisläufe und Stammbäume darstellen, CO₂-Bilanz auswerten, Sensoren verstehen, Steuer- und Regelprozesse beschreiben, naturwissenschaftliche Entscheidungen begründen.</td><td><span class="timing-badge transfer">Festigung nach MI</span> Datenstrukturen, Sensorik, Informatiksysteme, Bewertung von Quellen</td><td>gesichert</td><td>Mess- oder Recherche-Dossier mit Systemskizze und Dateninterpretation</td></tr>
+</tbody>
+</table>
+<div class="sourcebox"><h3>Verdichtung für Natur und Technik</h3><ul><li><strong>7. Klasse:</strong> Forschen, Protokollieren und Recherchieren als Basis für digitale Dokumentation.</li><li><strong>8. Klasse:</strong> Variablenkontrolle, Messreihen, Technikzyklus und Modelle als Kern für datenorientierten Fachunterricht.</li><li><strong>9. Klasse:</strong> Sensoren, Messen, Steuern und Regeln verbinden NT direkt mit Informatiksystemen.</li></ul></div>
+</div>
+<div class="fachmittel-block" data-fach="Fremdsprachen" id="fachmittel-fremdsprachen">
+<h3>dis donc! 7–9, Französisch</h3>
+<p>Die Zuordnung ist als Anschluss an die Lehrmittelstruktur und die offiziellen LMVZ-Angaben zu verstehen. «dis donc!» setzt die sechs LP21-Kompetenzbereiche Hören, Lesen, Sprechen, Schreiben, Sprache(n) im Fokus und Kulturen im Fokus um; die Lernplattform 7–9 ist integraler Bestandteil des Lehrmittels.</p>
+<table>
+<thead><tr><th>Schuljahr</th><th>Lehrmittel / Struktur</th><th>enthaltene Lern- und Anwendungskompetenzen</th><th>Passender MI-Anschluss</th><th>Status</th><th>geeigneter Nachweis</th></tr></thead>
+<tbody>
+<tr class="fachmittel-row" data-quarter="7Q1 7Q2 7Q3 7Q4"><td>7. Klasse</td><td>dis donc! 7: Unités, digitale Lernplattform, Hören, Lesen, Sprechen, Schreiben</td><td>digitale Hör- und Lesetexte nutzen, Wortschatz mit digitalen Übungen festigen, kurze mündliche oder schriftliche Produkte erstellen, Lernfortschritt dokumentieren.</td><td><span class="timing-badge basis">Schulweite Basis</span> Audio, digitale Übung, Portfolio, Dateiablage</td><td>abgeleitet</td><td>Audioaufnahme oder digitales Lernjournal</td></tr>
+<tr class="fachmittel-row" data-quarter="8Q1 8Q2 8Q3 8Q4"><td>8. Klasse</td><td>dis donc! 8: Unités, Lernplattform, Sprachmittlung, Präsentieren, Schreiben</td><td>Informationen aus französischen Medien entnehmen, kurze Präsentationen vorbereiten, Schreibprodukte überarbeiten, digitale Hilfsmittel bewusst nutzen.</td><td><span class="timing-badge aufbau">Aufbau im Fach</span> Recherche, Präsentation, Textüberarbeitung</td><td>abgeleitet</td><td>Kurzpräsentation mit Stichwortkarten und Quellenangabe</td></tr>
+<tr class="fachmittel-row" data-quarter="9Q1 9Q2 9Q3 9Q4"><td>9. Klasse</td><td>dis donc! 9: fünf frei kombinierbare Module</td><td>Module projektartig bearbeiten, digitale Medien für Sprachproduktion nutzen, Lernprodukte sammeln, Rückmeldungen aufnehmen und überarbeiten.</td><td><span class="timing-badge transfer">Festigung nach MI</span> Medienprodukt, Kooperation, Präsentation</td><td>abgeleitet</td><td>digitales Sprachprodukt oder Portfolioeintrag</td></tr>
+</tbody>
+</table>
+<div class="sourcebox"><h3>Verdichtung für Französisch</h3><ul><li><strong>7. Klasse:</strong> digitale Lernplattform, Audio und Lernjournal als niederschwellige Anwendungskompetenzen.</li><li><strong>8. Klasse:</strong> Präsentieren, Schreiben und Überarbeiten mit digitalen Hilfsmitteln.</li><li><strong>9. Klasse:</strong> modulare Projektarbeit eignet sich für kurze Medienprodukte und digitale Portfolios.</li></ul></div>
+</div>
+<div class="fachmittel-block" data-fach="RZG" id="fachmittel-rzg">
+<h3>Durchblick Geografie Geschichte 1/2</h3>
+<p>Durchblick ist als RZG-Lehrmittel für den 3. Zyklus angelegt und verbindet geografisches und historisches Lernen. Die Bände sind auf 7. Klasse bis erstes Semester 8. Klasse beziehungsweise zweites Semester 8. Klasse bis Ende 9. Klasse verteilt. Die Anwendungskompetenzen werden vor allem über Karten, Bilder, Quellen, Recherche, Daten, Orientierung und Präsentation sichtbar.</p>
+<table>
+<thead><tr><th>Schuljahr</th><th>Lehrmittel / Einsatz</th><th>enthaltene Lern- und Anwendungskompetenzen</th><th>Passender MI-Anschluss</th><th>Status</th><th>geeigneter Nachweis</th></tr></thead>
+<tbody>
+<tr class="fachmittel-row" data-quarter="7Q1 7Q2 7Q3 7Q4"><td>7. Klasse</td><td>Durchblick 1: 7. Schuljahr</td><td>Karten, Bilder und Sachtexte erschliessen; geografische und historische Informationen strukturieren; einfache Quellenvergleiche durchführen; Ergebnisse visuell darstellen.</td><td><span class="timing-badge aufbau">Aufbau im Fach</span> Quellen, Karten, Bildanalyse, Darstellung</td><td>abgeleitet</td><td>Quellenkarte oder digitale Zeitleiste</td></tr>
+<tr class="fachmittel-row" data-quarter="8Q1 8Q2 8Q3 8Q4"><td>8. Klasse</td><td>Durchblick 1 bis Ende erstes Semester; Durchblick 2 ab zweitem Semester</td><td>Informationen aus Karten, Diagrammen, Bildern und Texten kombinieren; räumliche und historische Entwicklungen vergleichen; Rechercheergebnisse begründet darstellen.</td><td><span class="timing-badge transfer">Festigung nach MI</span> Recherche, Daten, Karten, Medienbeiträge beurteilen</td><td>abgeleitet</td><td>Faktencheck, Kartenanalyse oder Dossier</td></tr>
+<tr class="fachmittel-row" data-quarter="9Q1 9Q2 9Q3 9Q4"><td>9. Klasse</td><td>Durchblick 2: zweites Semester 8. Klasse bis Ende 9. Klasse</td><td>komplexere Quellen und Darstellungen auswerten; historische und geografische Fragestellungen mit Medien und Daten bearbeiten; Standpunkte begründet präsentieren.</td><td><span class="timing-badge transfer">Festigung nach MI</span> Medienkritik, Daten, Präsentation, Quellenbewertung</td><td>abgeleitet</td><td>RZG-Dossier mit Quellenprüfung und Präsentation</td></tr>
+</tbody>
+</table>
+<div class="sourcebox"><h3>Verdichtung für RZG</h3><ul><li><strong>7. Klasse:</strong> Karten, Bilder und Quellen als Grundlage für Medien- und Recherchekompetenz.</li><li><strong>8. Klasse:</strong> Übergang von Band 1 zu Band 2 eignet sich für stärker daten- und quellenorientierte Aufträge.</li><li><strong>9. Klasse:</strong> komplexe Quellenarbeit, Medienkritik und begründete Präsentationen sind zentrale Transferfelder.</li></ul></div>
+</div>
+</section>
+<section id="quellen">
+<h2>6. Quellen und Entwicklung</h2>
+<div class="note"><strong>Grundlagen:</strong> Der Praxisleitfaden wurde aus dem Aargauer Lehrplan Volksschule, Modul Medien und Informatik, den vorhandenen Jahresplanungen zu Connected 3 und Connected 4 sowie den im Linkverzeichnis aufgeführten Unterrichtsmaterialien und Praxisbeispielen entwickelt.</div>
+<div class="sourcebox">
+<h3>Verwendete Hauptquellen</h3>
+<ul>
+<li>Aargauer Lehrplan Volksschule, Modul Medien und Informatik, Kompetenzaufbau MI.1 Medien und MI.2 Informatik.</li><li>Aargauer Lehrplan Volksschule, Gesamtausgabe: fächerübergreifende Anwendungskompetenzen in den Fachbereichslehrplänen, unter anderem Tastaturschreiben, Textüberarbeitung, Präsentieren, Recherche, Quellenarbeit, Tabellenkalkulation und digitale Zusammenarbeit.</li>
+<li>Jahresplanung Medien und Informatik 7. Klasse mit Connected 3.</li>
+<li>Jahresplanung Medien und Informatik 9. Klasse mit Connected 4.</li>
+<li>Jahresplanungen Deutsch: Die Sprachstarken 7, 8 und 9 als Grundlage für Anwendungskompetenzen im Deutschunterricht.</li>
+<li>Jahresplanungen Natur und Technik: Prisma 1, Prisma 2 und Prisma 3 als Grundlage für Anwendungskompetenzen in NT.</li>
+<li>LMVZ-Themenübersichten Mathematik 1–3 Sekundarstufe I als Grundlage für Anwendungskompetenzen zu Daten, Diagrammen, Tabellenkalkulation, Funktionen, Statistik und Modellierung.</li>
+<li>LMVZ-Informationen zu dis donc! 7–9, insbesondere Lehrplan-21-Bezug, sechs Kompetenzbereiche und Lernplattform 7–9.</li>
+<li>Westermann-/Lehrmittelangaben zu Durchblick Geografie Geschichte 1/2, insbesondere Bandaufteilung und Lehrplan-21-Bezug.</li>
+<li>Unterrichtsmaterialien und Planungshilfen aus PH Luzern, mia4u, zebis, SRF school, IQES CheckNews, PHZH, Jugend und Medien, saferinternet.at, PHBern, code4school, CS Unplugged, iLearnIT, Internet-ABC und weiteren im Linkverzeichnis aufgeführten Quellen.</li>
+</ul>
+</div>
+<div class="sourcebox">
+<h3>KI-Hinweis</h3>
+<p>Dieser Praxisleitfaden wurde mit Unterstützung von KI entwickelt, strukturiert und redaktionell überarbeitet. Die Auswahl der Beispiele, die Kompetenzzuordnung, die Zeitangaben und die Formulierungen wurden im Arbeitsprozess mehrfach kritisch geprüft und angepasst.</p>
+<p>Die KI-Unterstützung ersetzt keine fachliche Prüfung durch Schule, Fachschaft oder Lehrperson. Vor dem verbindlichen Einsatz müssen Links, lokale ICT-Werkzeuge, Datenschutzvorgaben, Niveauanpassungen und zeitliche Passung durch die verantwortlichen Personen geprüft werden.</p>
+</div>
+<div class="sourcebox">
+<h3>Einordnung der Zeit- und Kompetenzangaben</h3>
+<p>Die Zeitangaben sind nur dann als Quellenangabe zu verstehen, wenn dies ausdrücklich ausgewiesen ist. Alle anderen Angaben sind didaktische Schätzungen für 45-Minuten-Lektionen. Die Kompetenzbezüge orientieren sich am Aargauer Modul Medien und Informatik sowie an den fächerübergreifenden Anwendungskompetenzen aus der Gesamtausgabe. Sie wurden so gesetzt, dass Kompetenz, Auftrag und sichtbarer Nachweis zusammenpassen.</p>
+</div>
+</section>
+<section id="links">
+<h2>7. Linkverzeichnis</h2>
+<div class="sourcebox">
+<h3>Planungshilfen</h3>
+<p><a class="external-source" data-url="https://www.phlu.ch/_Resources/Persistent/9/f/7/8/9f782c966110c3d639edff2be42caaa67170814c/Planungshilfe_Medien_und_Informatik_Z3_2020_07.pdf" href="https://www.phlu.ch/_Resources/Persistent/9/f/7/8/9f782c966110c3d639edff2be42caaa67170814c/Planungshilfe_Medien_und_Informatik_Z3_2020_07.pdf" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.phlu.ch/_Resources/Persistent/9/f/7/8/9f782c966110c3d639edff2be42caaa67170814c/Planungshilfe_Medien_und_Informatik_Z3_2020_07.pdf">PH Luzern: Planungshilfe Medien und Informatik Zyklus 3</a></p>
+<p><a class="external-source" data-url="https://www.mia4u.ch/katalog" href="https://www.mia4u.ch/katalog" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.mia4u.ch/katalog">mia4u: Katalog mit Unterrichtsideen und Unterrichtseinheiten</a></p>
+<p><a class="external-source" data-url="https://www.zebis.ch/lp21/filter/v-ef/all" href="https://www.zebis.ch/lp21/filter/v-ef/all" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/lp21/filter/v-ef/all">zebis: Lehrplan-Materialien</a></p>
+</div>
+<div class="sourcebox">
+<h3>Medienkritik, Fake News, Recherche</h3>
+<p><a class="external-source" data-url="https://www.srf.ch/sendungen/school/medien-und-informatik" href="https://www.srf.ch/sendungen/school/medien-und-informatik" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.srf.ch/sendungen/school/medien-und-informatik">SRF school: Medien und Informatik</a></p>
+<p><a class="external-source" data-url="https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1" href="https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.srf.ch/sendungen/school/medien-und-informatik/medienkompetenz-im-unterricht-was-sind-fake-news-1">SRF school: Was sind Fake News?</a></p>
+<p><a class="external-source" data-url="https://www.iqesonline.net/bildung-digital/checknews/" href="https://www.iqesonline.net/bildung-digital/checknews/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.iqesonline.net/bildung-digital/checknews/">IQES CheckNews</a></p>
+</div>
+<div class="sourcebox">
+<h3>Datenschutz, Social Media, Rechte</h3>
+<p><a class="external-source" data-url="https://openilias.phzh.ch/go/lm/249" href="https://openilias.phzh.ch/go/lm/249" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://openilias.phzh.ch/go/lm/249">PHZH: Sicher auf der Datenwelle</a></p>
+<p><a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/creative-commons-zebisdigital" href="https://www.zebis.ch/unterrichtsmaterial/creative-commons-zebisdigital" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/creative-commons-zebisdigital">zebis.digital: Creative Commons</a></p>
+<p><a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/social-media-zebisdigital" href="https://www.zebis.ch/unterrichtsmaterial/social-media-zebisdigital" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/social-media-zebisdigital">zebis.digital: Social Media</a></p>
+<p><a class="external-source" data-url="https://jugendundmedien.ch/topics/datenschutz" href="https://jugendundmedien.ch/topics/datenschutz" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://jugendundmedien.ch/topics/datenschutz">Jugend und Medien: Datenschutz</a></p>
+<p><a class="external-source" data-url="https://www.saferinternet.at/services/lernunterlagen/aktiv-gegen-cybermobbing-1" href="https://www.saferinternet.at/services/lernunterlagen/aktiv-gegen-cybermobbing-1" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.saferinternet.at/services/lernunterlagen/aktiv-gegen-cybermobbing-1">saferinternet.at: Aktiv gegen Cybermobbing</a></p>
+</div>
+<div class="sourcebox">
+<h3>Daten, Programmieren, Medienproduktion</h3>
+<p><a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/wie-speichere-und-teile-ich-meine-daten" href="https://www.zebis.ch/unterrichtsmaterial/wie-speichere-und-teile-ich-meine-daten" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/wie-speichere-und-teile-ich-meine-daten">zebis: Wie speichere und teile ich meine Daten?</a></p>
+<p><a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/einfach-informatik-7-9-programmieren" href="https://www.zebis.ch/unterrichtsmaterial/einfach-informatik-7-9-programmieren" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/einfach-informatik-7-9-programmieren">zebis: Einfach Informatik 7 bis 9 Programmieren</a></p>
+<p><a class="external-source" data-url="https://www.code4school.ch/" href="https://www.code4school.ch/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.code4school.ch/">code4school</a></p>
+<p><a class="external-source" data-url="https://digileb.phbern.ch/medien-gestalten-und-nutzen/medien-gestalten/lehr-lernfilm/" href="https://digileb.phbern.ch/medien-gestalten-und-nutzen/medien-gestalten/lehr-lernfilm/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://digileb.phbern.ch/medien-gestalten-und-nutzen/medien-gestalten/lehr-lernfilm/">PHBern: Lehr-Lernfilm</a></p>
+<p><a class="external-source" data-url="https://www.zebis.ch/dossier/podcasts-der-schule" href="https://www.zebis.ch/dossier/podcasts-der-schule" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/dossier/podcasts-der-schule">zebis: Podcasts in der Schule</a></p>
+</div>
+<div class="sourcebox">
+<h3>Fachlehrmittel und Anwendungskompetenzen</h3>
+<p><a class="external-source" data-url="https://003.lmvz.ch/lehrmittelsites/mathe_sek/de/m1/index.html" href="https://003.lmvz.ch/lehrmittelsites/mathe_sek/de/m1/index.html" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://003.lmvz.ch/lehrmittelsites/mathe_sek/de/m1/index.html">LMVZ: Material zu Mathematik 1</a></p>
+<p><a class="external-source" data-url="https://003.lmvz.ch/lehrmittelsites/mathe_sek/de/m2/index.html" href="https://003.lmvz.ch/lehrmittelsites/mathe_sek/de/m2/index.html" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://003.lmvz.ch/lehrmittelsites/mathe_sek/de/m2/index.html">LMVZ: Material zu Mathematik 2</a></p>
+<p><a class="external-source" data-url="https://003.lmvz.ch/lehrmittelsites/mathe_sek/de/m3/index.html" href="https://003.lmvz.ch/lehrmittelsites/mathe_sek/de/m3/index.html" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://003.lmvz.ch/lehrmittelsites/mathe_sek/de/m3/index.html">LMVZ: Material zu Mathematik 3</a></p>
+<p><a class="external-source" data-url="https://www.lmvz.ch/schule/dis-donc/lehrplan-21" href="https://www.lmvz.ch/schule/dis-donc/lehrplan-21" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.lmvz.ch/schule/dis-donc/lehrplan-21">LMVZ: dis donc! und Lehrplan 21</a></p>
+<p><a class="external-source" data-url="https://www.lmvz.ch/schule/dis-donc/sekundarstufe-i" href="https://www.lmvz.ch/schule/dis-donc/sekundarstufe-i" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.lmvz.ch/schule/dis-donc/sekundarstufe-i">LMVZ: dis donc! Sekundarstufe I und Lernplattform 7–9</a></p>
+<p><a class="external-source" data-url="https://www.westermann-schweiz.ch/artikel/978-3-14-140225-4/Durchblick-Geografie-Geschichte-Ausgabe-fuer-die-Schweiz-Schuelerband-1" href="https://www.westermann-schweiz.ch/artikel/978-3-14-140225-4/Durchblick-Geografie-Geschichte-Ausgabe-fuer-die-Schweiz-Schuelerband-1" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.westermann-schweiz.ch/artikel/978-3-14-140225-4/Durchblick-Geografie-Geschichte-Ausgabe-fuer-die-Schweiz-Schuelerband-1">Westermann Schweiz: Durchblick Geografie Geschichte Band 1</a></p>
+<p><a class="external-source" data-url="https://www.westermann-schweiz.ch/artikel/978-3-14-140230-8/Durchblick-Geografie-Geschichte-Ausgabe-fuer-die-Schweiz-Schulbuch-2" href="https://www.westermann-schweiz.ch/artikel/978-3-14-140230-8/Durchblick-Geografie-Geschichte-Ausgabe-fuer-die-Schweiz-Schulbuch-2" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.westermann-schweiz.ch/artikel/978-3-14-140230-8/Durchblick-Geografie-Geschichte-Ausgabe-fuer-die-Schweiz-Schulbuch-2">Westermann Schweiz: Durchblick Geografie Geschichte Band 2</a></p>
+</div>
+<div class="sourcebox">
+<h3>Zusätzliche Praxisbeispiele für Fachunterricht</h3>
+<p><a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/medien-und-deren-grundfunktionen" href="https://www.zebis.ch/unterrichtsmaterial/medien-und-deren-grundfunktionen" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/medien-und-deren-grundfunktionen">zebis: Medien und deren Grundfunktionen</a></p>
+<p><a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/wahr-oder-fake" href="https://www.zebis.ch/unterrichtsmaterial/wahr-oder-fake" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/wahr-oder-fake">zebis: Wahr oder Fake</a></p>
+<p><a class="external-source" data-url="https://usethenews.ch/sprache/deutsch/" href="https://usethenews.ch/sprache/deutsch/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://usethenews.ch/sprache/deutsch/">UseTheNews Schweiz: Bilder lesen und verstehen</a></p>
+<p><a class="external-source" data-url="https://www.feel-ok.ch/de_CH/schule/themen/medienkompetenz/medienkompetenz.cfm" href="https://www.feel-ok.ch/de_CH/schule/themen/medienkompetenz/medienkompetenz.cfm" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.feel-ok.ch/de_CH/schule/themen/medienkompetenz/medienkompetenz.cfm">feel-ok.ch: Medienkompetenz, Arbeitsblätter und didaktische Unterlagen</a></p>
+<p><a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/medienpholy-medienspiel" href="https://www.zebis.ch/unterrichtsmaterial/medienpholy-medienspiel" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/medienpholy-medienspiel">zebis: MedienPHoly</a></p>
+<p><a class="external-source" data-url="https://www.zebis.ch/unterrichtsmaterial/das-dilemma-mit-den-sozialen-medien-fragebogen-zum-dokumentarfilm" href="https://www.zebis.ch/unterrichtsmaterial/das-dilemma-mit-den-sozialen-medien-fragebogen-zum-dokumentarfilm" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.zebis.ch/unterrichtsmaterial/das-dilemma-mit-den-sozialen-medien-fragebogen-zum-dokumentarfilm">zebis: Das Dilemma mit den sozialen Medien</a></p>
+</div>
+<div class="sourcebox">
+<h3>Zusätzliche Informatikbeispiele</h3>
+<p><a class="external-source" data-url="https://www.csunplugged.org/de/topics/sorting-networks/whats-it-all-about/" href="https://www.csunplugged.org/de/topics/sorting-networks/whats-it-all-about/" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.csunplugged.org/de/topics/sorting-networks/whats-it-all-about/">CS Unplugged: Sortiernetzwerke</a></p>
+<p><a class="external-source" data-url="https://ilearnit.ch/de/2b/teacher.html" href="https://ilearnit.ch/de/2b/teacher.html" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://ilearnit.ch/de/2b/teacher.html">iLearnIT: Wie denken Computer? Für Lehrpersonen</a></p>
+<p><a class="external-source" data-url="https://www.mia4u.ch/katalog" href="https://www.mia4u.ch/katalog" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://www.mia4u.ch/katalog">mia4u: QR-Lesespur, Tabellenkalkulation, Internet Safety, Concept-Maps</a></p>
+<p><a class="external-source" data-url="https://jugendundmedien.ch/topics/desinformation" href="https://jugendundmedien.ch/topics/desinformation" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://jugendundmedien.ch/topics/desinformation">Jugend und Medien: Desinformation</a></p>
+<p><a class="external-source" data-url="https://jugendundmedien.ch/topics/cybermobbing" href="https://jugendundmedien.ch/topics/cybermobbing" rel="noopener noreferrer" target="_blank" title="Quelle öffnen: https://jugendundmedien.ch/topics/cybermobbing">Jugend und Medien: Cybermobbing</a></p>
+</div>
+</section>
+<p class="small print-note">Ausdruck aus dem HTML-Praxisleitfaden Medien und Informatik fachübergreifend.</p>
+</main>
+<script>
+  const search = document.getElementById('search');
+  const fachFilter = document.getElementById('fachFilter');
+  const miFilter = document.getElementById('miFilter');
+  const categoryFilter = document.getElementById('categoryFilter');
+  const subjectCheckboxes = [...document.querySelectorAll('input[name="subjectPick"]')];
+  const quarterCheckboxes = [...document.querySelectorAll('input[name="quarterPick"]')];
+  const resetSubjectFilter = document.getElementById('resetSubjectFilter');
+  const resultCount = document.getElementById('resultCount');
+  const cards = [...document.querySelectorAll('.example')];
+  const subjectRows = [...document.querySelectorAll('#subject-overview-table tbody tr')];
+  const fachmittelBlocks = [...document.querySelectorAll('.fachmittel-block')];
+  const fachmittelRows = [...document.querySelectorAll('.fachmittel-row')];
+
+  function selectedSubjects(){
+    return subjectCheckboxes.filter(cb => cb.checked).map(cb => cb.value);
+  }
+
+  function selectedQuarters(){
+    return quarterCheckboxes.filter(cb => cb.checked).map(cb => cb.value);
+  }
+
+  function matchesSubjectList(fachText, subjects){
+    if(!subjects.length) return true;
+    if(fachText.includes('alle Fächer')) return true;
+    return subjects.some(subject => fachText.includes(subject));
+  }
+  function quarterTokensFromText(text){
+    const source = (text || '').replace(/\s+/g, ' ');
+    const tokens = new Set();
+    let currentGrade = null;
+    const re = /([789])\.\s*Klasse|([789])\s*Q([1-4])|Q([1-4])/g;
+    let match;
+    while((match = re.exec(source)) !== null){
+      if(match[1]){
+        currentGrade = match[1];
+      } else if(match[2] && match[3]){
+        currentGrade = match[2];
+        tokens.add(`${match[2]}Q${match[3]}`);
+      } else if(match[4] && currentGrade){
+        tokens.add(`${currentGrade}Q${match[4]}`);
+      }
+    }
+    return [...tokens];
+  }
+
+  function matchesQuarterList(text, quarters){
+    if(!quarters.length) return true;
+    const tokens = String(text || '').includes('Q') && !String(text || '').includes('Klasse')
+      ? String(text || '').split(/\s+/).filter(Boolean)
+      : quarterTokensFromText(text);
+    return quarters.some(q => tokens.includes(q));
+  }
+
+
+  function filterContent(){
+    const q = search ? search.value.toLowerCase().trim() : '';
+    const detailSubject = fachFilter ? fachFilter.value : '';
+    const subjects = selectedSubjects();
+    const quarters = selectedQuarters();
+    const mi = miFilter ? miFilter.value : '';
+    const category = categoryFilter ? categoryFilter.value : '';
+    let visibleCards = 0;
+
+    subjectRows.forEach(row => {
+      const fach = row.cells[0]?.innerText || '';
+      const anschluss = row.dataset.quarter || row.cells[3]?.innerText || '';
+      const okSubject = matchesSubjectList(fach, subjects);
+      const okQuarter = matchesQuarterList(anschluss, quarters);
+      row.classList.toggle('hidden-by-filter', !(okSubject && okQuarter));
+    });
+
+    fachmittelBlocks.forEach(block => {
+      const fach = block.dataset.fach || '';
+      const okSubject = matchesSubjectList(fach, subjects);
+      let anyVisibleRow = false;
+      block.querySelectorAll('.fachmittel-row').forEach(row => {
+        const quarterData = row.dataset.quarter || '';
+        const okQuarter = !quarters.length || quarters.some(q => quarterData.includes(q));
+        row.classList.toggle('hidden-by-filter', !okQuarter);
+        if(okQuarter) anyVisibleRow = true;
+      });
+      block.classList.toggle('hidden-by-filter', !(okSubject && anyVisibleRow));
+    });
+
+    cards.forEach(card => {
+      const text = card.innerText.toLowerCase();
+      const fach = card.dataset.fach || '';
+      const mis = card.dataset.mi || '';
+      const kat = card.dataset.kategorie || '';
+      const okQ = !q || text.includes(q);
+      const okTopSubject = matchesSubjectList(fach, subjects);
+      const okQuarter = matchesQuarterList(card.dataset.quarter || card.innerText, quarters);
+      const okDetailSubject = !detailSubject || fach.includes(detailSubject) || fach.includes('alle Fächer');
+      const okMi = !mi || mis.includes(mi);
+      const okKat = !category || kat === category;
+      const visible = okQ && okTopSubject && okQuarter && okDetailSubject && okMi && okKat;
+      card.classList.toggle('hidden-by-filter', !visible);
+      if(visible) visibleCards++;
+    });
+
+    if(resultCount){
+      const subjectText = subjects.length ? subjects.join(', ') : 'alle Fächer';
+      const quarterText = quarters.length ? quarters.map(q => q.replace('Q', ' Q')).join(', ') : 'alle Quartale';
+      resultCount.textContent = `${visibleCards} Praxisbeispiele sichtbar. Fachlehrmittelanschlüsse werden mitgefiltert. Fachfilter: ${subjectText}. Quartal: ${quarterText}.`;
+    }
+  }
+
+  subjectCheckboxes.forEach(cb => cb.addEventListener('change', filterContent));
+  quarterCheckboxes.forEach(cb => cb.addEventListener('change', filterContent));
+  if(resetSubjectFilter){
+    resetSubjectFilter.addEventListener('click', () => {
+      subjectCheckboxes.forEach(cb => cb.checked = false);
+      quarterCheckboxes.forEach(cb => cb.checked = false);
+      if(fachFilter) fachFilter.value = '';
+      filterContent();
+    });
+  }
+  if(search) search.addEventListener('input', filterContent);
+  if(fachFilter) fachFilter.addEventListener('change', filterContent);
+  if(miFilter) miFilter.addEventListener('change', filterContent);
+  if(categoryFilter) categoryFilter.addEventListener('change', filterContent);
+
+
+  function showCopyStatus(message){
+    let status = document.getElementById('copyStatus');
+    if(!status){
+      status = document.createElement('div');
+      status.id = 'copyStatus';
+      status.className = 'copy-status';
+      status.setAttribute('role', 'status');
+      status.setAttribute('aria-live', 'polite');
+      document.body.appendChild(status);
+    }
+    status.textContent = message;
+    status.hidden = false;
+    clearTimeout(status._timer);
+    status._timer = setTimeout(() => { status.hidden = true; }, 2600);
+  }
+
+  function fallbackCopy(text){
+    const area = document.createElement('textarea');
+    area.value = text;
+    area.setAttribute('readonly', '');
+    area.style.position = 'fixed';
+    area.style.left = '-9999px';
+    document.body.appendChild(area);
+    area.select();
+    let ok = false;
+    try { ok = document.execCommand('copy'); } catch(err) { ok = false; }
+    document.body.removeChild(area);
+    return ok;
+  }
+
+  document.querySelectorAll('a.external-source').forEach((link, index) => {
+    link.setAttribute('target', '_blank');
+    link.setAttribute('rel', 'noopener noreferrer');
+    const url = link.getAttribute('href');
+    if(url && !link.getAttribute('title')) link.setAttribute('title', url);
+    if(link.nextElementSibling && link.nextElementSibling.classList.contains('copy-source-btn')) return;
+    const btn = document.createElement('button');
+    btn.type = 'button';
+    btn.className = 'copy-source-btn';
+    btn.textContent = 'Link kopieren';
+    btn.setAttribute('aria-label', 'Quellenlink kopieren');
+    btn.addEventListener('click', async () => {
+      const text = link.getAttribute('href') || link.dataset.url || '';
+      if(!text) return;
+      let copied = false;
+      if(navigator.clipboard && window.isSecureContext){
+        try {
+          await navigator.clipboard.writeText(text);
+          copied = true;
+        } catch(err) {
+          copied = false;
+        }
+      }
+      if(!copied) copied = fallbackCopy(text);
+      showCopyStatus(copied ? 'Link kopiert.' : 'Link konnte nicht automatisch kopiert werden. Rechtsklick auf den Quellenlink verwenden.');
+    });
+    link.insertAdjacentElement('afterend', btn);
+  });
+
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener('click', () => {
+      const id = decodeURIComponent(link.getAttribute('href').slice(1));
+      const target = document.getElementById(id);
+      if(!target) return;
+      if(target.classList.contains('hidden-by-filter')){
+        target.classList.remove('hidden-by-filter');
+        target.classList.add('revealed-by-link');
+        setTimeout(() => target.classList.remove('revealed-by-link'), 2500);
+      }
+      const parentBlock = target.closest('.fachmittel-block');
+      if(parentBlock && parentBlock.classList.contains('hidden-by-filter')){
+        parentBlock.classList.remove('hidden-by-filter');
+        parentBlock.classList.add('revealed-by-link');
+        setTimeout(() => parentBlock.classList.remove('revealed-by-link'), 2500);
+      }
+    });
+  });
+  filterContent();
+</script>
+</body>
+</html>
